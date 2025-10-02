@@ -1,3 +1,3 @@
 # alysabrown.com
 
-Simple single page site for local aertist.
+Simple single page site for local artist.
