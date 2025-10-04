@@ -29,11 +29,17 @@
             display: flex;
             gap: 20px;
             margin-bottom: 20px;
+            align-items: center;
+            justify-content: center;
         }
         .main-image {
             width: 50%;
-            max-height: 400px;
+            min-width: 400px;
+            max-width: 600px;
+            max-height: 600px;
             object-fit: cover;
+            height: auto;
+            display: block;
         }
         .centered-image {
             text-align: center;
@@ -41,17 +47,22 @@
         }
         .centered-image .main-image {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
+            margin: 0 auto;
         }
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             margin-bottom: 20px;
+            justify-items: center;
         }
         .gallery img {
-            width: 30%;
-            margin-bottom: 2%;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            display: block;
+            object-fit: cover;
         }
         .about {
             background-color: #f4f4f4;
@@ -70,17 +81,33 @@
         .about-content {
             flex: 1;
         }
+        @media (max-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery img {
+                height: 280px;
+            }
+        }
         @media (max-width: 600px) {
             .main-artworks {
                 flex-direction: column;
+                align-items: center;
             }
             .main-image {
                 width: 100%;
+                min-width: unset;
+                max-width: 100%;
                 margin-bottom: 10px;
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
             .gallery img {
                 width: 100%;
-                margin-bottom: 10px;
+                max-width: 100%;
+                height: 250px;
             }
             .about {
                 flex-direction: column;
@@ -156,24 +183,119 @@
     </header>
     
     <div class="main-artworks">
-        <img src="assets/IMG_0911.jpg" alt="Main Artwork 1" class="main-image">
-        <img src="assets/IMG_1430.jpg" alt="Main Artwork 2" class="main-image">
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_0911_small.webp 400w,
+                            assets/medium/webp/IMG_0911_medium.webp 800w,
+                            assets/large/webp/IMG_0911_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px">
+            <img src="assets/medium/IMG_0911_medium.jpg" 
+                 srcset="assets/small/IMG_0911_small.jpg 400w,
+                         assets/medium/IMG_0911_medium.jpg 800w,
+                         assets/large/IMG_0911_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px"
+                 alt="Main Artwork 1" 
+                 class="main-image"
+                 loading="lazy">
+        </picture>
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_1430_small.webp 400w,
+                            assets/medium/webp/IMG_1430_medium.webp 800w,
+                            assets/large/webp/IMG_1430_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px">
+            <img src="assets/medium/IMG_1430_medium.jpg" 
+                 srcset="assets/small/IMG_1430_small.jpg 400w,
+                         assets/medium/IMG_1430_medium.jpg 800w,
+                         assets/large/IMG_1430_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px"
+                 alt="Main Artwork 2" 
+                 class="main-image"
+                 loading="lazy">
+        </picture>
     </div>
 
     <hr class="icon">
     <h2>Artworks</h2>
     <section class="gallery">
-        <img src="assets/IMG_9663.jpg" alt="Artwork 1">
-        <img src="assets/IMG_9660.jpg" alt="Artwork 2">
-        <img src="assets/IMG_9667.jpg" alt="Artwork 3">
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_9663_small.webp 400w,
+                            assets/medium/webp/IMG_9663_medium.webp 800w,
+                            assets/large/webp/IMG_9663_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px">
+            <img src="assets/medium/IMG_9663_medium.jpg" 
+                 srcset="assets/small/IMG_9663_small.jpg 400w,
+                         assets/medium/IMG_9663_medium.jpg 800w,
+                         assets/large/IMG_9663_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
+                 alt="Artwork 1"
+                 loading="lazy">
+        </picture>
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_9660_small.webp 400w,
+                            assets/medium/webp/IMG_9660_medium.webp 800w,
+                            assets/large/webp/IMG_9660_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px">
+            <img src="assets/medium/IMG_9660_medium.jpg" 
+                 srcset="assets/small/IMG_9660_small.jpg 400w,
+                         assets/medium/IMG_9660_medium.jpg 800w,
+                         assets/large/IMG_9660_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
+                 alt="Artwork 2"
+                 loading="lazy">
+        </picture>
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_9667_small.webp 400w,
+                            assets/medium/webp/IMG_9667_medium.webp 800w,
+                            assets/large/webp/IMG_9667_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px">
+            <img src="assets/medium/IMG_9667_medium.jpg" 
+                 srcset="assets/small/IMG_9667_small.jpg 400w,
+                         assets/medium/IMG_9667_medium.jpg 800w,
+                         assets/large/IMG_9667_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
+                 alt="Artwork 3"
+                 loading="lazy">
+        </picture>
     </section>
     
     <div class="centered-image">
-        <img src="assets/IMG_0158.jpg" alt="Artwork 4" class="main-image">
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_0158_small.webp 400w,
+                            assets/medium/webp/IMG_0158_medium.webp 800w,
+                            assets/large/webp/IMG_0158_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 600px, 700px">
+            <img src="assets/medium/IMG_0158_medium.jpg" 
+                 srcset="assets/small/IMG_0158_small.jpg 400w,
+                         assets/medium/IMG_0158_medium.jpg 800w,
+                         assets/large/IMG_0158_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 600px, 700px"
+                 alt="Artwork 4" 
+                 class="main-image"
+                 loading="lazy">
+        </picture>
     </div>
     
     <section class="about">
-        <img src="assets/IMG_0035.JPG" alt="Artist Profile" class="profile-image">
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_0035_small.webp 150w,
+                            assets/medium/webp/IMG_0035_medium.webp 300w,
+                            assets/large/webp/IMG_0035_large.webp 450w"
+                    sizes="150px">
+            <img src="assets/small/IMG_0035_small.jpg" 
+                 srcset="assets/small/IMG_0035_small.jpg 150w,
+                         assets/medium/IMG_0035_medium.jpg 300w,
+                         assets/large/IMG_0035_large.jpg 450w"
+                 sizes="150px"
+                 alt="Artist Profile" 
+                 class="profile-image"
+                 loading="lazy">
+        </picture>
         <div class="about-content">
             <h2>About the Artist</h2>
             <p>Alysa Brown is an up-and-coming artist originally from Oregon. She has already begun to make a name for herself in the local art scene with her bold and dynamic style.</p>
