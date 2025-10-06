@@ -1,3 +1,4 @@
 # alysabrown.com
 
-Simple single page site for local artist.
+Simple single page site for local Eugene Oregon artist.
+
