@@ -67,18 +67,21 @@
             background-color: #f4f4f4;
             padding: 20px;
             border-radius: 5px;
-            display: flex;
-            align-items: flex-start;
+        }
+        .about-content {
+            display: block;
         }
         .profile-image {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            float: left;
             margin-right: 20px;
+            margin-bottom: 10px;
         }
-        .about-content {
-            flex: 1;
+        .about-text {
+            display: block;
         }
         @media (max-width: 768px) {
             .gallery {
@@ -137,14 +140,13 @@
                 display: block !important;
                 margin: 0 auto !important;
             }
-            .about {
-                flex-direction: column;
-                align-items: center;
+            .about-content {
                 text-align: center;
             }
             .profile-image {
-                margin-right: 0;
-                margin-bottom: 20px;
+                float: none;
+                display: block;
+                margin: 0 auto 20px auto;
             }
         }
         hr.icon {
@@ -309,27 +311,31 @@
     </div>
     
     <section class="about">
-        <picture>
-            <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_0035_small.webp 150w,
-                            assets/medium/webp/IMG_0035_medium.webp 300w,
-                            assets/large/webp/IMG_0035_large.webp 450w"
-                    sizes="150px">
-            <img src="assets/small/IMG_0035_small.jpg" 
-                 srcset="assets/small/IMG_0035_small.jpg 150w,
-                         assets/medium/IMG_0035_medium.jpg 300w,
-                         assets/large/IMG_0035_large.jpg 450w"
-                 sizes="150px"
-                 alt="Artist Profile" 
-                 class="profile-image"
-                 loading="lazy">
-        </picture>
+        <h2>About the Artist</h2>
         <div class="about-content">
-            <h2>About the Artist</h2>
-            <p>Alysa Brown is an up-and-coming artist originally from Oregon. She has already begun to make a name for herself in the local art scene with her bold and dynamic style.</p>
-            <p>Alysa's work spans a variety of subjects, showcasing her versatility as an artist. Her paintings capture the essence of her subjects through vivid colors and expressive brushstrokes. She infuses each piece with a sense of life and energy.</p>
-            <p>Her technique often involves layering bright, contrasting colors to create depth and visual interest. This approach results in artwork that seem to leap off the canvas, engaging viewers with their intensity and emotional impact.</p>
-            <p>As an artist, Alysa draws inspiration from both classical portraiture and contemporary pop art, blending these influences to create her unique aesthetic.</p>
+            <div class="about-text">
+                <p>
+                    <picture>
+                        <source type="image/webp" 
+                                srcset="assets/small/webp/IMG_0035_small.webp 150w,
+                                        assets/medium/webp/IMG_0035_medium.webp 300w,
+                                        assets/large/webp/IMG_0035_large.webp 450w"
+                                sizes="150px">
+                        <img src="assets/small/IMG_0035_small.jpg" 
+                             srcset="assets/small/IMG_0035_small.jpg 150w,
+                                     assets/medium/IMG_0035_medium.jpg 300w,
+                                     assets/large/IMG_0035_large.jpg 450w"
+                             sizes="150px"
+                             alt="Artist Profile" 
+                             class="profile-image"
+                             loading="lazy">
+                    </picture>
+                    Alysa Brown is an up-and-coming artist originally from Oregon. She has already begun to make a name for herself in the local art scene with her bold and dynamic style.
+                </p>
+                <p>Alysa's work spans a variety of subjects, showcasing her versatility as an artist. Her paintings capture the essence of her subjects through vivid colors and expressive brushstrokes. She infuses each piece with a sense of life and energy.</p>
+                <p>Her technique often involves layering bright, contrasting colors to create depth and visual interest. This approach results in artwork that seem to leap off the canvas, engaging viewers with their intensity and emotional impact.</p>
+                <p>As an artist, Alysa draws inspiration from both classical portraiture and contemporary pop art, blending these influences to create her unique aesthetic.</p>
+            </div>
         </div>
     </section>
 </body>
