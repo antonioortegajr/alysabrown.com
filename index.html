@@ -45,7 +45,9 @@
         }
         .centered-image .main-image {
             width: 100%;
-            max-width: 400px;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
             margin: 0 auto;
         }
         .gallery {
@@ -108,7 +110,7 @@
                 width: 290px !important;
                 max-width: 290px !important;
                 height: auto !important;
-                object-fit: cover;
+                object-fit: contain;
                 display: block !important;
                 margin: 0 auto !important;
             }
@@ -288,6 +290,34 @@
                          assets/large/IMG_9667_large.jpg 1200w"
                  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
                  alt="Artwork 3"
+                 loading="lazy">
+        </picture>
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_7482_small.webp 400w,
+                            assets/medium/webp/IMG_7482_medium.webp 800w,
+                            assets/large/webp/IMG_7482_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px">
+            <img src="assets/medium/IMG_7482_medium.jpg" 
+                 srcset="assets/small/IMG_7482_small.jpg 400w,
+                         assets/medium/IMG_7482_medium.jpg 800w,
+                         assets/large/IMG_7482_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
+                 alt="Artwork 4"
+                 loading="lazy">
+        </picture>
+        <picture>
+            <source type="image/webp" 
+                    srcset="assets/small/webp/IMG_1818_small.webp 400w,
+                            assets/medium/webp/IMG_1818_medium.webp 800w,
+                            assets/large/webp/IMG_1818_large.webp 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px">
+            <img src="assets/medium/IMG_1818_medium.jpg" 
+                 srcset="assets/small/IMG_1818_small.jpg 400w,
+                         assets/medium/IMG_1818_medium.jpg 800w,
+                         assets/large/IMG_1818_large.jpg 1200w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
+                 alt="Artwork 5"
                  loading="lazy">
         </picture>
     </section>
