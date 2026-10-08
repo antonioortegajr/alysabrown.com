@@ -8,7 +8,7 @@ alysabrown.com is a single-page portfolio site for Alysa Brown, a fine artist in
 
 - Plain static HTML. No build step, no package manager, no framework, no JavaScript.
 - All markup and CSS live in `index.html` (styles are in one inline `<style>` block in `<head>`).
-- External resources: Font Awesome 6 (cdnjs; used only for the heart on the `hr.icon` divider) and Google Fonts (Cormorant Garamond, Jost). Social icons are inline SVGs.
+- External resources: Google Fonts only (Cormorant Garamond, Jost). Icons are inline SVGs (social links in the header; the `hr.icon` heart is an SVG data URI in CSS). Don't add icon fonts or other render-blocking stylesheets.
 - Hosted on GitHub Pages, deployed from the root of `main`; `CNAME` holds the domain. GitHub Pages ignores `.htaccess` and sets its own headers (e.g. a fixed `cache-control: max-age=600`), so cache/header changes can't be made from the repo.
 
 ## Layout
