@@ -1,0 +1,70 @@
+# AGENTS.md
+
+Guidance for AI coding agents working on this repo.
+
+## Project overview
+
+alysabrown.com is a single-page portfolio site for Alysa Brown, a fine artist in Eugene, Oregon.
+
+- Plain static HTML. No build step, no package manager, no framework, no JavaScript.
+- All markup and CSS live in `index.html` (styles are in one inline `<style>` block in `<head>`).
+- External resources: Font Awesome 6 (cdnjs) and Google Fonts (Cormorant Garamond, Jost).
+- Served by Apache; `.htaccess` sets compression, cache, and security headers. `CNAME` holds the domain.
+
+## Layout
+
+```
+index.html        # the whole site
+.htaccess         # Apache caching/compression/security headers
+CNAME             # alysabrown.com
+assets/
+  IMG_xxxx.jpg    # originals
+  small/          # 300px tall JPGs (IMG_xxxx_small.jpg)  + webp/
+  medium/         # 600px tall JPGs (IMG_xxxx_medium.jpg) + webp/
+  large/          # 900px tall JPGs (IMG_xxxx_large.jpg)  + webp/
+```
+
+## Running locally
+
+No install needed. Open `index.html` in a browser, or serve the folder:
+
+```sh
+python3 -m http.server 8000
+# then visit http://localhost:8000
+```
+
+There are no tests or linters. Verify changes by viewing the page at desktop, tablet (≤768px), and phone (≤600px) widths.
+
+## Conventions
+
+- Keep everything in `index.html`. Do not add a build system, framework, or separate CSS/JS files unless the issue asks for it.
+- Header styles use the `ab-` prefix and CSS custom properties (`--ab-paper`, `--ab-ink`, `--ab-muted`, `--ab-rule`, `--ab-pad`) scoped to `.ab-header`. Reuse them for header changes.
+- Indent with 4 spaces in HTML; match surrounding indentation in CSS.
+- Respect `prefers-reduced-motion`: any new animation needs a reduced-motion fallback.
+- External links use `target="_blank" rel="noopener"`.
+
+## Adding or changing artwork images
+
+1. Put the original in `assets/` as `IMG_xxxx.jpg`.
+2. Create `small`, `medium`, and `large` JPG versions plus matching `.webp` files in each size's `webp/` folder, following the existing names (`IMG_xxxx_small.jpg`, `IMG_xxxx_small.webp`, etc.).
+3. Add a `<picture>` to the `.gallery` section in `index.html`, copying an existing one: a webp `<source>` with `srcset`/`sizes`, a JPG `<img>` fallback, `loading="lazy"`, and a descriptive `alt`.
+
+## Git and pull requests
+
+- `main` is production. `staging` is where changes are reviewed before going to `main`.
+- Agents never commit or open PRs directly against `main`. The maintainer merges `staging` into `main`.
+- Branch from `staging`, naming the branch after the issue (e.g. `25-agents-md` or `agent/issue-25`), and open a PR against `staging`.
+- Keep each PR scoped to its issue. Do not commit `.DS_Store` or other OS/editor files.
+- PR description format:
+
+  ```md
+  ## Summary
+
+  One or two sentences on what changed and why.
+
+  ## Changes
+
+  - Bullet list of specific changes (selectors, files, copy)
+
+  Closes #NN
+  ```
