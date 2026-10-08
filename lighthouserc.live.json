@@ -1,0 +1,24 @@
+{
+    "ci": {
+        "collect": {
+            "url": ["https://alysabrown.com/"],
+            "numberOfRuns": 3
+        },
+        "assert": {
+            "assertions": {
+                "categories:performance": ["warn", {"minScore": 0.9}],
+                "categories:accessibility": ["warn", {"minScore": 0.9}],
+                "categories:best-practices": ["warn", {"minScore": 0.9}],
+                "categories:seo": ["warn", {"minScore": 0.9}],
+                "lcp-lazy-loaded": "warn",
+                "uses-responsive-images": "warn",
+                "modern-image-formats": "warn",
+                "render-blocking-resources": "warn",
+                "unsized-images": "warn"
+            }
+        },
+        "upload": {
+            "target": "temporary-public-storage"
+        }
+    }
+}
