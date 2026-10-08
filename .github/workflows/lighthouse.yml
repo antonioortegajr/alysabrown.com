@@ -1,0 +1,29 @@
+name: Lighthouse
+
+on:
+  pull_request:
+    branches: [staging]
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Lighthouse CI
+        run: npx --yes @lhci/cli@0.15.1 autorun
+
+      - name: Add report links to job summary
+        if: always()
+        run: |
+          if [ -f .lighthouseci/links.json ]; then
+            echo "## Lighthouse reports" >> "$GITHUB_STEP_SUMMARY"
+            python3 -c "import json; [print(f'- [{u}]({l})') for u, l in json.load(open('.lighthouseci/links.json')).items()]" >> "$GITHUB_STEP_SUMMARY"
+          fi
