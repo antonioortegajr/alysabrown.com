@@ -4,7 +4,7 @@ Guidance for AI coding agents working on this repo.
 
 ## Project overview
 
-alysabrown.com is a single-page portfolio site for Alysa Brown, a fine artist in Eugene, Oregon.
+alysabrown.com is a single-page portfolio site for Alysa Brown, a fine artist in Oregon.
 
 - Plain static HTML. No build step, no package manager, no framework, no JavaScript.
 - All markup and CSS live in `index.html` (styles are in one inline `<style>` block in `<head>`).
