@@ -19,8 +19,10 @@ README.md         # one-line project description
 AGENTS.md         # this file
 .htaccess         # Apache headers config; unused on GitHub Pages
 CNAME             # alysabrown.com
-lighthouserc.json # Lighthouse CI config
-.github/workflows/lighthouse.yml  # runs Lighthouse CI on PRs to staging
+lighthouserc.json # Lighthouse CI config for PRs
+lighthouserc.live.json  # Lighthouse CI config for the live site (warn-only)
+.github/workflows/lighthouse.yml       # runs Lighthouse CI on PRs to staging
+.github/workflows/lighthouse-live.yml  # runs Lighthouse on the live site after each Pages deploy
 assets/
   IMG_xxxx.jpg    # originals (IMG_0035 is .JPG)
   small/          # IMG_xxxx_small.jpg,  ~300px tall  + webp/IMG_xxxx_small.webp
@@ -49,7 +51,11 @@ python3 -m http.server 8000
 
 There are no unit tests or linters. Verify changes by viewing the page at desktop, tablet (≤768px), and phone (≤600px) widths.
 
-Every PR to `staging` runs Lighthouse CI (`.github/workflows/lighthouse.yml`, config in `lighthouserc.json`): 3 mobile runs against the static files. It fails on accessibility below 90, a lazy-loaded LCP image, images not served in a modern format, or images larger than they display (`uses-responsive-images`); performance, best practices, SEO, and render-blocking resources are warnings. Report links appear in the job summary. To run it locally:
+Every PR to `staging` runs Lighthouse CI (`.github/workflows/lighthouse.yml`, config in `lighthouserc.json`): 3 mobile runs against the static files. It fails on accessibility below 90, a lazy-loaded LCP image, images not served in a modern format, or images larger than they display (`uses-responsive-images`); performance, best practices, SEO, and render-blocking resources are warnings. Report links appear in the job summary.
+
+After each successful GitHub Pages deploy of `main`, `.github/workflows/lighthouse-live.yml` runs Lighthouse 3 times against https://alysabrown.com/ using `lighthouserc.live.json`. It is report-only (all assertions warn) and puts the median scores and a report link in the job summary. It can also be run by hand from the Actions tab (`workflow_dispatch`).
+
+To run the PR check locally:
 
 ```sh
 npx @lhci/cli@0.15.1 autorun
