@@ -25,10 +25,11 @@ assets/
   IMG_xxxx.jpg    # originals (IMG_0035 is .JPG)
   small/          # IMG_xxxx_small.jpg,  ~300px tall  + webp/IMG_xxxx_small.webp
   medium/         # IMG_xxxx_medium.jpg, ~600px tall  + webp/IMG_xxxx_medium.webp
+  mid/            # IMG_xxxx_mid.jpg, phone-sized (see below) + webp/IMG_xxxx_mid.webp
   large/          # IMG_xxxx_large.jpg,  ~900px tall  + webp/IMG_xxxx_large.webp
 ```
 
-Portrait images are 300/600/900px tall (about 225/450/675px wide). Exceptions: `IMG_0158` is landscape (400/800/1200px wide), and `IMG_9667`'s original is only 435×580, so its medium and large files are both that size.
+Portrait images are 300/600/900px tall (about 225/450/675px wide). `mid/` exists so phones (Lighthouse emulates 1.75x DPR) get a file just over what they need: 510px wide for gallery, hero, and featured images (290px slot × 1.75 ≈ 508), and 300px wide for the 150px profile photo. Keep `mid` files at least that wide, or the browser skips them for the next size up. Exceptions: `IMG_0158` is landscape (400/800/1200px wide), and `IMG_9667`'s original is only 435×580, so its medium and large files are both that size.
 
 Where images appear in `index.html`:
 
@@ -48,7 +49,7 @@ python3 -m http.server 8000
 
 There are no unit tests or linters. Verify changes by viewing the page at desktop, tablet (≤768px), and phone (≤600px) widths.
 
-Every PR to `staging` runs Lighthouse CI (`.github/workflows/lighthouse.yml`, config in `lighthouserc.json`): 3 mobile runs against the static files. It fails on accessibility below 90, a lazy-loaded LCP image, or images not served in a modern format; performance, best practices, SEO, render-blocking resources, and image sizing are warnings. Report links appear in the job summary. To run it locally:
+Every PR to `staging` runs Lighthouse CI (`.github/workflows/lighthouse.yml`, config in `lighthouserc.json`): 3 mobile runs against the static files. It fails on accessibility below 90, a lazy-loaded LCP image, images not served in a modern format, or images larger than they display (`uses-responsive-images`); performance, best practices, SEO, and render-blocking resources are warnings. Report links appear in the job summary. To run it locally:
 
 ```sh
 npx @lhci/cli@0.15.1 autorun
@@ -65,10 +66,11 @@ npx @lhci/cli@0.15.1 autorun
 ## Adding or changing artwork images
 
 1. Put the original in `assets/` as `IMG_xxxx.jpg`.
-2. Create `small`, `medium`, and `large` JPG versions (300, 600, and 900px tall) plus matching `.webp` files in each size's `webp/` folder, following the existing names (`IMG_xxxx_small.jpg`, `IMG_xxxx_small.webp`, etc.). On macOS, for example:
+2. Create `small`, `medium`, `mid`, and `large` JPG versions (300px tall, 600px tall, 510px wide, 900px tall) plus matching `.webp` files in each size's `webp/` folder, following the existing names (`IMG_xxxx_small.jpg`, `IMG_xxxx_small.webp`, etc.). On macOS, for example:
 
    ```sh
    sips --resampleHeight 300 assets/IMG_xxxx.jpg --out assets/small/IMG_xxxx_small.jpg
+   sips -s format jpeg -s formatOptions 70 --resampleWidth 510 assets/IMG_xxxx.jpg --out assets/mid/IMG_xxxx_mid.jpg
    cwebp -q 80 assets/small/IMG_xxxx_small.jpg -o assets/small/webp/IMG_xxxx_small.webp
    ```
 

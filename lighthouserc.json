@@ -13,7 +13,7 @@
                 "categories:best-practices": ["warn", {"minScore": 0.9}],
                 "categories:seo": ["warn", {"minScore": 0.9}],
                 "lcp-lazy-loaded": "error",
-                "uses-responsive-images": "warn",
+                "uses-responsive-images": "error",
                 "modern-image-formats": "error",
                 "render-blocking-resources": "warn",
                 "unsized-images": "warn"
