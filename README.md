@@ -1,6 +1,6 @@
 # alysabrown.com
 
-Portfolio site for Alysa Brown, a fine artist in Eugene, Oregon. Live at [alysabrown.com](https://alysabrown.com).
+Portfolio site for Alysa Brown, a fine artist in Oregon. Live at [alysabrown.com](https://alysabrown.com).
 
 A single static page: all markup and CSS are in `index.html`, and artwork images are in `assets/` in several sizes, each as JPG and webp. There's no build step and no JavaScript.
 
