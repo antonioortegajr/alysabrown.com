@@ -1,0 +1,50 @@
+name: Lighthouse (live)
+
+# Report-only check of the live site after each GitHub Pages deploy.
+# PRs to staging are gated by lighthouse.yml; this one never fails on scores.
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse-live:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'github-pages')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Lighthouse CI against the live site
+        env:
+          SITE_URL: ${{ github.event.deployment_status.environment_url || 'https://alysabrown.com/' }}
+        run: npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.live.json --collect.url="$SITE_URL"
+
+      - name: Add scores and report link to job summary
+        if: always()
+        run: |
+          python3 - >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import glob, json, os
+          d = ".lighthouseci"
+          runs = [json.load(open(f)) for f in sorted(glob.glob(f"{d}/lhr-*.json"))]
+          if not runs:
+              raise SystemExit
+          runs.sort(key=lambda r: r["categories"]["performance"]["score"] or 0)
+          median = runs[len(runs) // 2]
+          links = json.load(open(f"{d}/links.json")) if os.path.exists(f"{d}/links.json") else {}
+          url = median["finalDisplayedUrl"]
+          link = next(iter(links.values()), "")
+          scores = [str(round((median["categories"][k]["score"] or 0) * 100)) for k in ("performance", "accessibility", "best-practices", "seo")]
+          print(f"## Lighthouse (live site, median of {len(runs)} runs)\n")
+          print("| URL | Performance | Accessibility | Best practices | SEO | Report |")
+          print("|---|---|---|---|---|---|")
+          print(f"| {url} | " + " | ".join(scores) + (f" | [report]({link}) |" if link else " | |"))
+          PY
