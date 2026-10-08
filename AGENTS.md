@@ -21,7 +21,6 @@ AGENTS.md         # this file
 CNAME             # alysabrown.com
 lighthouserc.json # Lighthouse CI config
 .github/workflows/lighthouse.yml  # runs Lighthouse CI on PRs to staging
-intex.html        # empty leftover file (typo of index.html); not served or linked
 assets/
   IMG_xxxx.jpg    # originals (IMG_0035 is .JPG)
   small/          # IMG_xxxx_small.jpg,  ~300px tall  + webp/IMG_xxxx_small.webp
@@ -81,7 +80,7 @@ npx @lhci/cli@0.15.1 autorun
 - `main` is production. `staging` is where changes are reviewed before going to `main`.
 - Agents never commit or open PRs directly against `main`. The maintainer merges `staging` into `main`.
 - Branch from `staging`, naming the branch after the issue (e.g. `25-agents-md` or `agent/issue-25`), and open a PR against `staging`.
-- Keep each PR scoped to its issue. Do not commit `.DS_Store` or other OS/editor files. `.gitignore` covers `.DS_Store` and `.lighthouseci/`; still check `git status` before committing. (`assets/.DS_Store` is already tracked by mistake; leave it unless an issue asks.)
+- Keep each PR scoped to its issue. Do not commit `.DS_Store` or other OS/editor files. `.gitignore` covers `.DS_Store` and `.lighthouseci/`; still check `git status` before committing.
 - PR description format:
 
   ```md
