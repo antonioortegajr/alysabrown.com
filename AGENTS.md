@@ -19,6 +19,8 @@ README.md         # one-line project description
 AGENTS.md         # this file
 .htaccess         # Apache headers config; unused on GitHub Pages
 CNAME             # alysabrown.com
+lighthouserc.json # Lighthouse CI config
+.github/workflows/lighthouse.yml  # runs Lighthouse CI on PRs to staging
 intex.html        # empty leftover file (typo of index.html); not served or linked
 assets/
   IMG_xxxx.jpg    # originals (IMG_0035 is .JPG)
@@ -45,7 +47,13 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-There are no tests or linters. Verify changes by viewing the page at desktop, tablet (≤768px), and phone (≤600px) widths.
+There are no unit tests or linters. Verify changes by viewing the page at desktop, tablet (≤768px), and phone (≤600px) widths.
+
+Every PR to `staging` runs Lighthouse CI (`.github/workflows/lighthouse.yml`, config in `lighthouserc.json`): 3 mobile runs against the static files. It fails on accessibility below 90, a lazy-loaded LCP image, or images not served in a modern format; performance, best practices, SEO, render-blocking resources, and image sizing are warnings. Report links appear in the job summary. To run it locally:
+
+```sh
+npx @lhci/cli@0.15.1 autorun
+```
 
 ## Conventions
 
@@ -73,7 +81,7 @@ There are no tests or linters. Verify changes by viewing the page at desktop, ta
 - `main` is production. `staging` is where changes are reviewed before going to `main`.
 - Agents never commit or open PRs directly against `main`. The maintainer merges `staging` into `main`.
 - Branch from `staging`, naming the branch after the issue (e.g. `25-agents-md` or `agent/issue-25`), and open a PR against `staging`.
-- Keep each PR scoped to its issue. Do not commit `.DS_Store` or other OS/editor files. There is no `.gitignore`, so check `git status` before committing. (`assets/.DS_Store` is already tracked by mistake; leave it unless an issue asks.)
+- Keep each PR scoped to its issue. Do not commit `.DS_Store` or other OS/editor files. `.gitignore` covers `.DS_Store` and `.lighthouseci/`; still check `git status` before committing. (`assets/.DS_Store` is already tracked by mistake; leave it unless an issue asks.)
 - PR description format:
 
   ```md
