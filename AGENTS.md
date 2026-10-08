@@ -9,13 +9,13 @@ alysabrown.com is a single-page portfolio site for Alysa Brown, a fine artist in
 - Plain static HTML. No build step, no package manager, no framework, no JavaScript.
 - All markup and CSS live in `index.html` (styles are in one inline `<style>` block in `<head>`).
 - External resources: Font Awesome 6 (cdnjs) and Google Fonts (Cormorant Garamond, Jost).
-- Served by Apache; `.htaccess` sets compression, cache, and security headers. `CNAME` holds the domain.
+- Hosted on GitHub Pages; `CNAME` holds the domain. GitHub Pages ignores `.htaccess` and sets its own headers (e.g. a fixed `cache-control: max-age=600`), so cache/header changes can't be made from the repo.
 
 ## Layout
 
 ```
 index.html        # the whole site
-.htaccess         # Apache caching/compression/security headers
+.htaccess         # Apache headers config; unused on GitHub Pages
 CNAME             # alysabrown.com
 assets/
   IMG_xxxx.jpg    # originals
