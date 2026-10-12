@@ -24,21 +24,21 @@ lighthouserc.live.json  # Lighthouse CI config for the live site (warn-only)
 .github/workflows/lighthouse.yml       # runs Lighthouse CI on PRs to staging
 .github/workflows/lighthouse-live.yml  # runs Lighthouse on the live site after each Pages deploy
 assets/
-  IMG_xxxx.jpg    # originals (IMG_0035 is .JPG)
-  small/          # IMG_xxxx_small.jpg,  ~300px tall  + webp/IMG_xxxx_small.webp
-  medium/         # IMG_xxxx_medium.jpg, ~600px tall  + webp/IMG_xxxx_medium.webp
-  mid/            # IMG_xxxx_mid.jpg, phone-sized (see below) + webp/IMG_xxxx_mid.webp
-  large/          # IMG_xxxx_large.jpg,  ~900px tall  + webp/IMG_xxxx_large.webp
+  descriptive-name.jpg    # originals, human-readable names, lowercase .jpg
+  small/          # descriptive-name_small.jpg,  ~300px tall  + webp/descriptive-name_small.webp
+  medium/         # descriptive-name_medium.jpg, ~600px tall  + webp/descriptive-name_medium.webp
+  mid/            # descriptive-name_mid.jpg, phone-sized (see below) + webp/descriptive-name_mid.webp
+  large/          # descriptive-name_large.jpg,  ~900px tall  + webp/descriptive-name_large.webp
 ```
 
-Portrait images are 300/600/900px tall (about 225/450/675px wide). `mid/` exists so phones (Lighthouse emulates 1.75x DPR) get a file just over what they need: 510px wide for gallery, hero, and featured images (290px slot × 1.75 ≈ 508), and 300px wide for the 150px profile photo. Keep `mid` files at least that wide, or the browser skips them for the next size up. Exceptions: `IMG_0158` is landscape (400/800/1200px wide), and `IMG_9667`'s original is only 435×580, so its medium and large files are both that size.
+Portrait images are 300/600/900px tall (about 225/450/675px wide). `mid/` exists so phones (Lighthouse emulates 1.75x DPR) get a file just over what they need: 510px wide for gallery, hero, and featured images (290px slot × 1.75 ≈ 508), and 300px wide for the 150px profile photo. Keep `mid` files at least that wide, or the browser skips them for the next size up. Exceptions: `fox-and-roses-diptych` is landscape (400/800/1200px wide), and `woman-in-profile-eyes-closed`'s original is only 435×580, so its medium and large files are both that size.
 
 Where images appear in `index.html`:
 
-- `.ab-split__art`: the hero image in the header (`IMG_0911`), loaded eagerly. It is the page's LCP image, so never lazy-load it.
+- `.ab-split__art`: the hero image in the header (`bearded-man-with-cat-and-ivy`), loaded eagerly. It is the page's LCP image, so never lazy-load it.
 - `.gallery`: the artwork grid (3 columns on desktop, 2 at ≤768px, 1 at ≤600px).
-- `.centered-image`: one featured landscape piece (`IMG_0158`) below the gallery.
-- `.about`: the round artist profile photo (`IMG_0035`).
+- `.centered-image`: one featured landscape piece (`fox-and-roses-diptych`) below the gallery.
+- `.about`: the round artist profile photo (`alysa-brown-painting-in-studio`).
 
 ## Running locally
 
@@ -71,13 +71,13 @@ npx @lhci/cli@0.15.1 autorun
 
 ## Adding or changing artwork images
 
-1. Put the original in `assets/` as `IMG_xxxx.jpg`.
-2. Create `small`, `medium`, `mid`, and `large` JPG versions (300px tall, 600px tall, 510px wide, 900px tall) plus matching `.webp` files in each size's `webp/` folder, following the existing names (`IMG_xxxx_small.jpg`, `IMG_xxxx_small.webp`, etc.). On macOS, for example:
+1. Put the original in `assets/` with a human-readable, lowercase `.jpg` name describing the artwork (e.g. `bearded-man-with-cat-and-ivy.jpg`).
+2. Create `small`, `medium`, `mid`, and `large` JPG versions (300px tall, 600px tall, 510px wide, 900px tall) plus matching `.webp` files in each size's `webp/` folder, following the existing names (`descriptive-name_small.jpg`, `descriptive-name_small.webp`, etc.). On macOS, for example:
 
    ```sh
-   sips --resampleHeight 300 assets/IMG_xxxx.jpg --out assets/small/IMG_xxxx_small.jpg
-   sips -s format jpeg -s formatOptions 70 --resampleWidth 510 assets/IMG_xxxx.jpg --out assets/mid/IMG_xxxx_mid.jpg
-   cwebp -q 80 assets/small/IMG_xxxx_small.jpg -o assets/small/webp/IMG_xxxx_small.webp
+   sips --resampleHeight 300 assets/descriptive-name.jpg --out assets/small/descriptive-name_small.jpg
+   sips -s format jpeg -s formatOptions 70 --resampleWidth 510 assets/descriptive-name.jpg --out assets/mid/descriptive-name_mid.jpg
+   cwebp -q 80 assets/small/descriptive-name_small.jpg -o assets/small/webp/descriptive-name_small.webp
    ```
 
 3. Add a `<picture>` to the `.gallery` section in `index.html`, copying an existing one: a webp `<source>` with `srcset`/`sizes`, a JPG `<img>` fallback, `loading="lazy"`, and a descriptive `alt`.
