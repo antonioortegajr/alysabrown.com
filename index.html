@@ -217,7 +217,7 @@
           color: var(--ab-ink);
           font-family: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           -webkit-font-smoothing: antialiased;
-          overflow: hidden;
+          overflow-x: clip;
         }
         .ab-header *,
         .ab-header *::before,
@@ -251,6 +251,61 @@
         .ab-social a:hover,
         .ab-social a:focus-visible { color: var(--ab-ink); transform: translateY(-1px); }
         .ab-social svg { width: 17px; height: 17px; fill: currentColor; display: block; }
+        .ab-utility__end {
+          display: flex;
+          align-items: center;
+          gap: 1.15rem;
+        }
+        .ab-menu { position: relative; }
+        .ab-menu summary {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          margin: -7px -7px -7px 0;
+          color: var(--ab-muted);
+          cursor: pointer;
+          list-style: none;
+          transition: color 220ms ease;
+        }
+        .ab-menu summary::-webkit-details-marker { display: none; }
+        .ab-menu summary:hover,
+        .ab-menu summary:focus-visible,
+        .ab-menu[open] summary { color: var(--ab-ink); }
+        .ab-menu summary svg { width: 18px; height: 18px; display: block; }
+        .ab-menu__panel {
+          position: absolute;
+          top: calc(100% + 0.75rem);
+          right: -7px;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          min-width: 11rem;
+          padding: 0.5rem 0;
+          background: var(--ab-paper);
+          border: 1px solid var(--ab-rule);
+        }
+        .ab-menu__panel a {
+          padding: 0.7rem 1.25rem;
+          font-size: 0.6875rem;
+          font-weight: 500;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          text-decoration: none;
+          color: var(--ab-muted);
+        }
+        .ab-menu__panel a:hover,
+        .ab-menu__panel a:focus-visible,
+        .ab-menu__panel a[aria-current="page"] { color: var(--ab-ink); }
+        .ab-visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+        }
         .ab-split {
           display: flex;
           flex-direction: column;
@@ -342,12 +397,26 @@
         .ab-split__text .ab-reveal:nth-child(2) { animation-delay: 160ms; }
         .ab-split__text .ab-reveal:nth-child(3) { animation-delay: 240ms; }
         .ab-split__text .ab-reveal:nth-child(4) { animation-delay: 320ms; }
+        .ab-split__text .ab-reveal-child { opacity: 0; transform: translateY(14px); animation: ab-rise 900ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
+        .ab-split__text .ab-reveal-child:nth-child(1) { animation-delay: 320ms; }
+        .ab-split__text .ab-reveal-child:nth-child(2) { animation-delay: 400ms; }
+        .ab-cta-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: clamp(2rem, 4vw, 2.75rem);
+        }
+        .ab-cta-row .ab-cta {
+            margin-top: 0;
+        }
         @keyframes ab-rise {
           to { opacity: 1; transform: none; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .ab-reveal { animation: none; opacity: 1; transform: none; }
-          .ab-social a, .ab-cta { transition: none; }
+          .ab-reveal, .ab-reveal-child { animation: none; opacity: 1; transform: none; }
+          .ab-social a, .ab-menu summary, .ab-cta { transition: none; }
         }
         @media (max-width: 900px) {
           .ab-split__art { min-height: 260px; }
@@ -374,14 +443,26 @@
     <header class="ab-header">
         <div class="ab-utility">
             <span class="ab-utility__label">Oregon</span>
-            <nav class="ab-social" aria-label="Social media">
-                <a href="https://www.instagram.com/alybrowny" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.209 0-4-1.79-4-4 0-2.209 1.79-4 4-4 2.209 0 4 1.79 4 4 0 2.209-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.439.645 1.439 1.439z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@alybrowny" target="_blank" rel="noopener" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-            </nav>
+            <div class="ab-utility__end">
+                <nav class="ab-social" aria-label="Social media">
+                    <a href="https://www.instagram.com/alybrowny" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.209 0-4-1.79-4-4 0-2.209 1.79-4 4-4 2.209 0 4 1.79 4 4 0 2.209-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.439.645 1.439 1.439z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@alybrowny" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
+                </nav>
+                <details class="ab-menu">
+                    <summary>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                        <span class="ab-visually-hidden">Menu</span>
+                    </summary>
+                    <nav class="ab-menu__panel" aria-label="Site">
+                        <a href="index.html" aria-current="page">Home</a>
+                        <a href="commissions.html">Commissions</a>
+                    </nav>
+                </details>
+            </div>
         </div>
         <div class="ab-split">
             <div class="ab-split__text">
@@ -393,23 +474,26 @@
                 <p class="ab-tagline ab-reveal">
                     Art is not just about expressing oneself, but about expressing the world.
                 </p>
-                <a class="ab-cta ab-reveal" href="https://forms.gle/vLJJhns3CGR1Ns3r5" target="_blank" rel="noopener">
-                    Inquire for sales
-                </a>
+                <div class="ab-cta-row ab-reveal">
+                    <a class="ab-cta ab-reveal-child" href="https://forms.gle/vLJJhns3CGR1Ns3r5" target="_blank" rel="noopener">
+                        Inquire for sales
+                    </a>
+                    <a class="ab-cta ab-reveal-child" href="commissions.html">Commissions</a>
+                </div>
             </div>
             <div class="ab-split__art">
                 <picture>
                     <source type="image/webp"
-                            srcset="assets/small/webp/IMG_0911_small.webp 225w,
-                                    assets/medium/webp/IMG_0911_medium.webp 450w,
-                                    assets/mid/webp/IMG_0911_mid.webp 510w,
-                                    assets/large/webp/IMG_0911_large.webp 675w"
+                            srcset="assets/small/webp/bearded-man-with-cat-and-ivy_small.webp 225w,
+                                    assets/medium/webp/bearded-man-with-cat-and-ivy_medium.webp 450w,
+                                    assets/mid/webp/bearded-man-with-cat-and-ivy_mid.webp 510w,
+                                    assets/large/webp/bearded-man-with-cat-and-ivy_large.webp 675w"
                             sizes="(max-width: 800px) calc(100vw - 40px), 760px">
-                    <img src="assets/medium/IMG_0911_medium.jpg"
-                         srcset="assets/small/IMG_0911_small.jpg 225w,
-                                 assets/medium/IMG_0911_medium.jpg 450w,
-                                 assets/mid/IMG_0911_mid.jpg 510w,
-                                 assets/large/IMG_0911_large.jpg 675w"
+                    <img src="assets/medium/bearded-man-with-cat-and-ivy_medium.jpg"
+                         srcset="assets/small/bearded-man-with-cat-and-ivy_small.jpg 225w,
+                                 assets/medium/bearded-man-with-cat-and-ivy_medium.jpg 450w,
+                                 assets/mid/bearded-man-with-cat-and-ivy_mid.jpg 510w,
+                                 assets/large/bearded-man-with-cat-and-ivy_large.jpg 675w"
                          sizes="(max-width: 800px) calc(100vw - 40px), 760px"
                          width="450" height="600"
                          alt="Detail from a portrait by Alysa Brown"
@@ -424,92 +508,92 @@
     <section class="gallery">
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_1430_small.webp 225w,
-                            assets/medium/webp/IMG_1430_medium.webp 450w,
-                            assets/mid/webp/IMG_1430_mid.webp 510w,
-                            assets/large/webp/IMG_1430_large.webp 675w"
+                    srcset="assets/small/webp/figure-with-sunflower_small.webp 225w,
+                            assets/medium/webp/figure-with-sunflower_medium.webp 450w,
+                            assets/mid/webp/figure-with-sunflower_mid.webp 510w,
+                            assets/large/webp/figure-with-sunflower_large.webp 675w"
                     sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-            <img src="assets/medium/IMG_1430_medium.jpg" 
-                 srcset="assets/small/IMG_1430_small.jpg 225w,
-                         assets/medium/IMG_1430_medium.jpg 450w,
-                         assets/mid/IMG_1430_mid.jpg 510w,
-                         assets/large/IMG_1430_large.jpg 675w"
+            <img src="assets/medium/figure-with-sunflower_medium.jpg" 
+                 srcset="assets/small/figure-with-sunflower_small.jpg 225w,
+                         assets/medium/figure-with-sunflower_medium.jpg 450w,
+                         assets/mid/figure-with-sunflower_mid.jpg 510w,
+                         assets/large/figure-with-sunflower_large.jpg 675w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
                  alt="Artwork"
                  loading="lazy">
         </picture>
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_9663_small.webp 225w,
-                            assets/medium/webp/IMG_9663_medium.webp 450w,
-                            assets/mid/webp/IMG_9663_mid.webp 510w,
-                            assets/large/webp/IMG_9663_large.webp 676w"
+                    srcset="assets/small/webp/figure-in-sun-hat-among-pink-petals_small.webp 225w,
+                            assets/medium/webp/figure-in-sun-hat-among-pink-petals_medium.webp 450w,
+                            assets/mid/webp/figure-in-sun-hat-among-pink-petals_mid.webp 510w,
+                            assets/large/webp/figure-in-sun-hat-among-pink-petals_large.webp 676w"
                     sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-            <img src="assets/medium/IMG_9663_medium.jpg" 
-                 srcset="assets/small/IMG_9663_small.jpg 225w,
-                         assets/medium/IMG_9663_medium.jpg 450w,
-                         assets/mid/IMG_9663_mid.jpg 510w,
-                         assets/large/IMG_9663_large.jpg 676w"
+            <img src="assets/medium/figure-in-sun-hat-among-pink-petals_medium.jpg" 
+                 srcset="assets/small/figure-in-sun-hat-among-pink-petals_small.jpg 225w,
+                         assets/medium/figure-in-sun-hat-among-pink-petals_medium.jpg 450w,
+                         assets/mid/figure-in-sun-hat-among-pink-petals_mid.jpg 510w,
+                         assets/large/figure-in-sun-hat-among-pink-petals_large.jpg 676w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
                  alt="Artwork 1"
                  loading="lazy">
         </picture>
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_9660_small.webp 225w,
-                            assets/medium/webp/IMG_9660_medium.webp 450w,
-                            assets/mid/webp/IMG_9660_mid.webp 510w,
-                            assets/large/webp/IMG_9660_large.webp 676w"
+                    srcset="assets/small/webp/reclining-figure-in-sun-hat_small.webp 225w,
+                            assets/medium/webp/reclining-figure-in-sun-hat_medium.webp 450w,
+                            assets/mid/webp/reclining-figure-in-sun-hat_mid.webp 510w,
+                            assets/large/webp/reclining-figure-in-sun-hat_large.webp 676w"
                     sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-            <img src="assets/medium/IMG_9660_medium.jpg" 
-                 srcset="assets/small/IMG_9660_small.jpg 225w,
-                         assets/medium/IMG_9660_medium.jpg 450w,
-                         assets/mid/IMG_9660_mid.jpg 510w,
-                         assets/large/IMG_9660_large.jpg 676w"
+            <img src="assets/medium/reclining-figure-in-sun-hat_medium.jpg" 
+                 srcset="assets/small/reclining-figure-in-sun-hat_small.jpg 225w,
+                         assets/medium/reclining-figure-in-sun-hat_medium.jpg 450w,
+                         assets/mid/reclining-figure-in-sun-hat_mid.jpg 510w,
+                         assets/large/reclining-figure-in-sun-hat_large.jpg 676w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
                  alt="Artwork 2"
                  loading="lazy">
         </picture>
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_9667_small.webp 225w,
-                            assets/medium/webp/IMG_9667_medium.webp 435w"
+                    srcset="assets/small/webp/woman-in-profile-eyes-closed_small.webp 225w,
+                            assets/medium/webp/woman-in-profile-eyes-closed_medium.webp 435w"
                     sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-            <img src="assets/medium/IMG_9667_medium.jpg" 
-                 srcset="assets/small/IMG_9667_small.jpg 225w,
-                         assets/medium/IMG_9667_medium.jpg 435w"
+            <img src="assets/medium/woman-in-profile-eyes-closed_medium.jpg" 
+                 srcset="assets/small/woman-in-profile-eyes-closed_small.jpg 225w,
+                         assets/medium/woman-in-profile-eyes-closed_medium.jpg 435w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
                  alt="Artwork 3"
                  loading="lazy">
         </picture>
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_7482_small.webp 225w,
-                            assets/medium/webp/IMG_7482_medium.webp 450w,
-                            assets/mid/webp/IMG_7482_mid.webp 510w,
-                            assets/large/webp/IMG_7482_large.webp 676w"
+                    srcset="assets/small/webp/wolf-in-violet-and-gold_small.webp 225w,
+                            assets/medium/webp/wolf-in-violet-and-gold_medium.webp 450w,
+                            assets/mid/webp/wolf-in-violet-and-gold_mid.webp 510w,
+                            assets/large/webp/wolf-in-violet-and-gold_large.webp 676w"
                     sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-            <img src="assets/medium/IMG_7482_medium.jpg" 
-                 srcset="assets/small/IMG_7482_small.jpg 225w,
-                         assets/medium/IMG_7482_medium.jpg 450w,
-                         assets/mid/IMG_7482_mid.jpg 510w,
-                         assets/large/IMG_7482_large.jpg 676w"
+            <img src="assets/medium/wolf-in-violet-and-gold_medium.jpg" 
+                 srcset="assets/small/wolf-in-violet-and-gold_small.jpg 225w,
+                         assets/medium/wolf-in-violet-and-gold_medium.jpg 450w,
+                         assets/mid/wolf-in-violet-and-gold_mid.jpg 510w,
+                         assets/large/wolf-in-violet-and-gold_large.jpg 676w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
                  alt="Artwork 4"
                  loading="lazy">
         </picture>
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_1818_small.webp 223w,
-                            assets/medium/webp/IMG_1818_medium.webp 446w,
-                            assets/mid/webp/IMG_1818_mid.webp 510w,
-                            assets/large/webp/IMG_1818_large.webp 670w"
+                    srcset="assets/small/webp/seated-figure-with-red-roses_small.webp 223w,
+                            assets/medium/webp/seated-figure-with-red-roses_medium.webp 446w,
+                            assets/mid/webp/seated-figure-with-red-roses_mid.webp 510w,
+                            assets/large/webp/seated-figure-with-red-roses_large.webp 670w"
                     sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-            <img src="assets/medium/IMG_1818_medium.jpg" 
-                 srcset="assets/small/IMG_1818_small.jpg 223w,
-                         assets/medium/IMG_1818_medium.jpg 446w,
-                         assets/mid/IMG_1818_mid.jpg 510w,
-                         assets/large/IMG_1818_large.jpg 670w"
+            <img src="assets/medium/seated-figure-with-red-roses_medium.jpg" 
+                 srcset="assets/small/seated-figure-with-red-roses_small.jpg 223w,
+                         assets/medium/seated-figure-with-red-roses_medium.jpg 446w,
+                         assets/mid/seated-figure-with-red-roses_mid.jpg 510w,
+                         assets/large/seated-figure-with-red-roses_large.jpg 670w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
                  alt="Artwork 5"
                  loading="lazy">
@@ -519,16 +603,16 @@
     <div class="centered-image">
         <picture>
             <source type="image/webp" 
-                    srcset="assets/small/webp/IMG_0158_small.webp 400w,
-                            assets/mid/webp/IMG_0158_mid.webp 510w,
-                            assets/medium/webp/IMG_0158_medium.webp 800w,
-                            assets/large/webp/IMG_0158_large.webp 1200w"
+                    srcset="assets/small/webp/fox-and-roses-diptych_small.webp 400w,
+                            assets/mid/webp/fox-and-roses-diptych_mid.webp 510w,
+                            assets/medium/webp/fox-and-roses-diptych_medium.webp 800w,
+                            assets/large/webp/fox-and-roses-diptych_large.webp 1200w"
                     sizes="(max-width: 600px) 290px, 300px">
-            <img src="assets/medium/IMG_0158_medium.jpg" 
-                 srcset="assets/small/IMG_0158_small.jpg 400w,
-                         assets/mid/IMG_0158_mid.jpg 510w,
-                         assets/medium/IMG_0158_medium.jpg 800w,
-                         assets/large/IMG_0158_large.jpg 1200w"
+            <img src="assets/medium/fox-and-roses-diptych_medium.jpg" 
+                 srcset="assets/small/fox-and-roses-diptych_small.jpg 400w,
+                         assets/mid/fox-and-roses-diptych_mid.jpg 510w,
+                         assets/medium/fox-and-roses-diptych_medium.jpg 800w,
+                         assets/large/fox-and-roses-diptych_large.jpg 1200w"
                  sizes="(max-width: 600px) 290px, 300px"
                  alt="Artwork 4" 
                  class="main-image"
@@ -543,16 +627,16 @@
                 <p>
                     <picture>
                         <source type="image/webp" 
-                                srcset="assets/small/webp/IMG_0035_small.webp 225w,
-                                        assets/mid/webp/IMG_0035_mid.webp 300w,
-                                        assets/medium/webp/IMG_0035_medium.webp 450w,
-                                        assets/large/webp/IMG_0035_large.webp 676w"
+                                srcset="assets/small/webp/alysa-brown-painting-in-studio_small.webp 225w,
+                                        assets/mid/webp/alysa-brown-painting-in-studio_mid.webp 300w,
+                                        assets/medium/webp/alysa-brown-painting-in-studio_medium.webp 450w,
+                                        assets/large/webp/alysa-brown-painting-in-studio_large.webp 676w"
                                 sizes="150px">
-                        <img src="assets/small/IMG_0035_small.jpg" 
-                             srcset="assets/small/IMG_0035_small.jpg 225w,
-                                     assets/mid/IMG_0035_mid.jpg 300w,
-                                     assets/medium/IMG_0035_medium.jpg 450w,
-                                     assets/large/IMG_0035_large.jpg 676w"
+                        <img src="assets/small/alysa-brown-painting-in-studio_small.jpg" 
+                             srcset="assets/small/alysa-brown-painting-in-studio_small.jpg 225w,
+                                     assets/mid/alysa-brown-painting-in-studio_mid.jpg 300w,
+                                     assets/medium/alysa-brown-painting-in-studio_medium.jpg 450w,
+                                     assets/large/alysa-brown-painting-in-studio_large.jpg 676w"
                              sizes="150px"
                              alt="Artist Profile" 
                              class="profile-image"
