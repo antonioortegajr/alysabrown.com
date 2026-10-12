@@ -7,7 +7,7 @@ Guidance for AI coding agents working on this repo.
 alysabrown.com is a portfolio site for Alysa Brown, a fine artist in Oregon.
 
 - Plain static HTML. No build step, no package manager, no framework, no JavaScript.
-- Markup and CSS live in `index.html` and `commissions.html` (each with one inline `<style>` block in `<head>`).
+- Markup and CSS live in `index.html`, `commissions.html`, and `faq.html` (each with one inline `<style>` block in `<head>`).
 - External resources: Google Fonts only (Cormorant Garamond, Jost). Icons are inline SVGs (social links in the header; the `hr.icon` heart is an SVG data URI in CSS). Don't add icon fonts or other render-blocking stylesheets.
 - Hosted on GitHub Pages, deployed from the root of `main`; `CNAME` holds the domain. GitHub Pages ignores `.htaccess` and sets its own headers (e.g. a fixed `cache-control: max-age=600`), so cache/header changes can't be made from the repo.
 
@@ -16,6 +16,7 @@ alysabrown.com is a portfolio site for Alysa Brown, a fine artist in Oregon.
 ```
 index.html        # home page
 commissions.html  # commissions page
+faq.html          # commissions FAQ page
 README.md         # one-line project description
 AGENTS.md         # this file
 .htaccess         # Apache headers config; unused on GitHub Pages
