@@ -3,7 +3,7 @@
         "collect": {
             "startServerCommand": "python3 -u -m http.server 8080",
             "startServerReadyPattern": "Serving HTTP",
-            "url": ["http://localhost:8080/"],
+            "url": ["http://localhost:8080/", "http://localhost:8080/commissions.html"],
             "numberOfRuns": 3
         },
         "assert": {
