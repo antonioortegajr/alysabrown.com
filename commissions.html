@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commissions | Alysa Brown</title>
-    <meta name="description" content="Custom, hand-painted portraits of the people, pets, and things you love — made from your photos.">
+    <meta name="description" content="Watercolor commissions by Alysa Brown: paintings of your pets, loved ones, and places of meaning.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -48,12 +48,14 @@
             padding: 0 1rem;
             background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23999' d='M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z'/%3E%3C/svg%3E") no-repeat center / 3rem 3rem;
         }
-        .ab-header {
+        :root {
           --ab-paper:  #faf8f5;
           --ab-ink:    #171614;
           --ab-muted:  #6e6a63;
           --ab-rule:   #ddd8d0;
           --ab-pad:    clamp(1.5rem, 5vw, 5rem);
+        }
+        .ab-header {
           background: var(--ab-paper);
           color: var(--ab-ink);
           font-family: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -114,10 +116,18 @@
           line-height: 1.5;
           color: var(--ab-muted);
         }
+        .ab-title-block { text-align: center; }
+        .ab-title-block .ab-note {
+          margin: 0 auto 30px;
+          max-width: 42ch;
+          color: var(--ab-muted);
+        }
+        .ab-closing { text-align: center; }
         .ab-cta {
           display: inline-block;
           margin: 20px 0 40px;
           padding: 0.9rem 1.9rem;
+          font-family: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           border: 1px solid var(--ab-ink);
           border-radius: 0;
           font-size: 0.6875rem;
@@ -237,42 +247,43 @@
         </div>
     </header>
 
-    <h1 class="ab-wordmark">Commissions</h1>
-    <p class="ab-tagline">Custom, hand-painted portraits of the people, pets, and things you love — made from your photos.</p>
-    <div style="text-align: center;">
+    <div class="ab-title-block">
+        <h1 class="ab-wordmark">Commissions</h1>
+        <p class="ab-tagline">Let me turn your memorable moments into a painting. A special pet, loved one, or place of meaning to you. I would be honored to create a piece that's dear to you.</p>
+        <p class="ab-note">I'm currently offering watercolor painting commissions.</p>
         <a class="ab-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdDH24qxTCZluyCPoAssFj2b07bp2eBq6NRsRFF3vzKnZHQEQ/viewform" target="_blank" rel="noopener">Request a commission</a>
     </div>
 
     <hr class="icon">
     <section>
         <h2>About commissions</h2>
-        <p>A commission is a one-of-a-kind painting made just for you. Alysa works from your favorite photos to capture a likeness, a mood, and the small details that make a subject yours: the tilt of a head, a favorite blouse, the way someone laughs. Commissions make meaningful gifts for anniversaries, weddings, birthdays, and memorials, or a lasting keepsake for your own home.</p>
+        <p>A commission is a one-of-a-kind watercolor painted just for you. I work from your favorite photos to capture a likeness, a mood, and the small details that make a subject yours: the tilt of a head, a favorite blouse, the way someone laughs. Commissions make meaningful gifts for anniversaries, weddings, birthdays, and memorials, or a lasting keepsake for your own home.</p>
     </section>
     <hr class="icon">
     <section>
         <h2>What I paint</h2>
         <ul>
             <li><strong>Pets:</strong> dogs, cats, horses, and other animal companions, including memorial portraits.</li>
-            <li><strong>Family & couples:</strong> parents, grandparents, siblings, couples, and wedding portraits.</li>
+            <li><strong>Loved ones:</strong> parents, grandparents, siblings, couples, and wedding portraits.</li>
             <li><strong>People:</strong> individual portraits that capture personality, from candid moments to formal poses.</li>
-            <li><strong>Cars & keepsakes:</strong> classic cars, motorcycles, homes, and other things that hold a story.</li>
+            <li><strong>Places &amp; keepsakes:</strong> homes, favorite spots, classic cars, and other things that hold a story.</li>
         </ul>
-        <p>Not sure if your idea fits? Ask. Alysa is happy to talk through any subject.</p>
+        <p>Not sure if your idea fits? Ask. I'm happy to talk through any subject.</p>
     </section>
     <hr class="icon">
     <section>
         <h2>How it works</h2>
         <ol>
-            <li><strong>Send a request.</strong> Fill out the commission form with your subject, preferred size and medium, deadline, and a few reference photos.</li>
-            <li><strong>Talk it through.</strong> Alysa will reply within 3 business days to talk about your vision and send a quote. <!-- PLACEHOLDER: confirm with Alysa --></li>
-            <li><strong>Reserve your spot.</strong> A 50% non-refundable deposit books your commission on the calendar. The balance is due when the painting is finished. <!-- PLACEHOLDER: confirm with Alysa --></li>
-            <li><strong>Painting begins.</strong> You'll get a progress photo partway through so you can share feedback before the final details.</li>
-            <li><strong>Delivery.</strong> Once the final payment is received, your painting is carefully packed and shipped, or ready for local pickup in Oregon.</li>
+            <li><strong>Reach out.</strong> Use the inquiry button to tell me about your subject, preferred size, any deadline, and share a few reference photos.</li>
+            <li><strong>Let's discuss the details.</strong> I'll reply within 3 business days to talk about your vision and send a quote. <!-- PLACEHOLDER: confirm with Alysa --></li>
+            <li><strong>Reserve your spot.</strong> A 50% non-refundable deposit books your commission on my calendar. The balance is due when the painting is finished. <!-- PLACEHOLDER: confirm with Alysa --></li>
+            <li><strong>Painting begins.</strong> I'll send a progress photo partway through so you can share feedback before the final details.</li>
+            <li><strong>Delivery.</strong> Once the final payment is received, I'll carefully pack and ship your painting, or you can pick it up locally in Oregon.</li>
         </ol>
-        <p><strong>About reference photos:</strong> clear, well-lit photos where the subject's face (or the car!) is in focus work best. You can send several, and Alysa can combine people or pets from different photos into one painting.</p>
+        <p><strong>About reference photos:</strong> clear, well-lit photos where the subject is in focus work best. You can send several, and I can combine people or pets from different photos into one painting.</p>
     </section>
     <hr class="icon">
-        <section>
+    <section>
         <h2>Examples</h2>
         <p>A selection of recent watercolor commissions.</p>
         <div class="gallery">
@@ -281,24 +292,24 @@
                 <img src="assets/medium/dog-portrait_medium.jpg" srcset="assets/small/dog-portrait_small.jpg 215w, assets/medium/dog-portrait_medium.jpg 430w, assets/mid/dog-portrait_mid.jpg 510w, assets/large/dog-portrait_large.jpg 645w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of a tan and white dog with perked ears" loading="lazy">
             </picture>
             <picture>
-                <source type="image/webp" srcset="assets/small/webp/red-mustang_small.webp 382w, assets/medium/webp/red-mustang_medium.webp 764w, assets/mid/webp/red-mustang_mid.webp 510w, assets/large/webp/red-mustang_large.webp 1147w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-                <img src="assets/medium/red-mustang_medium.jpg" srcset="assets/small/red-mustang_small.jpg 382w, assets/medium/red-mustang_medium.jpg 764w, assets/mid/red-mustang_mid.jpg 510w, assets/large/red-mustang_large.jpg 1147w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor of a red Ford Mustang with black racing stripes on a track" loading="lazy">
+                <source type="image/webp" srcset="assets/small/webp/red-mustang_small.webp 382w, assets/mid/webp/red-mustang_mid.webp 510w, assets/medium/webp/red-mustang_medium.webp 764w, assets/large/webp/red-mustang_large.webp 1147w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
+                <img src="assets/medium/red-mustang_medium.jpg" srcset="assets/small/red-mustang_small.jpg 382w, assets/mid/red-mustang_mid.jpg 510w, assets/medium/red-mustang_medium.jpg 764w, assets/large/red-mustang_large.jpg 1147w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor of a red Ford Mustang with black racing stripes on a track" loading="lazy">
             </picture>
             <picture>
-                <source type="image/webp" srcset="assets/small/webp/couple-on-park-bench_small.webp 390w, assets/medium/webp/couple-on-park-bench_medium.webp 781w, assets/mid/webp/couple-on-park-bench_mid.webp 510w, assets/large/webp/couple-on-park-bench_large.webp 1171w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-                <img src="assets/medium/couple-on-park-bench_medium.jpg" srcset="assets/small/couple-on-park-bench_small.jpg 390w, assets/medium/couple-on-park-bench_medium.jpg 781w, assets/mid/couple-on-park-bench_mid.jpg 510w, assets/large/couple-on-park-bench_large.jpg 1171w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor of a couple seen from behind, sitting close on a park bench" loading="lazy">
+                <source type="image/webp" srcset="assets/small/webp/couple-on-park-bench_small.webp 390w, assets/mid/webp/couple-on-park-bench_mid.webp 510w, assets/medium/webp/couple-on-park-bench_medium.webp 781w, assets/large/webp/couple-on-park-bench_large.webp 1171w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
+                <img src="assets/medium/couple-on-park-bench_medium.jpg" srcset="assets/small/couple-on-park-bench_small.jpg 390w, assets/mid/couple-on-park-bench_mid.jpg 510w, assets/medium/couple-on-park-bench_medium.jpg 781w, assets/large/couple-on-park-bench_large.jpg 1171w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor of a couple seen from behind, sitting close on a park bench" loading="lazy">
             </picture>
             <picture>
-                <source type="image/webp" srcset="assets/small/webp/couple-portrait_small.webp 377w, assets/medium/webp/couple-portrait_medium.webp 754w, assets/mid/webp/couple-portrait_mid.webp 510w, assets/large/webp/couple-portrait_large.webp 1131w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-                <img src="assets/medium/couple-portrait_medium.jpg" srcset="assets/small/couple-portrait_small.jpg 377w, assets/medium/couple-portrait_medium.jpg 754w, assets/mid/couple-portrait_mid.jpg 510w, assets/large/couple-portrait_large.jpg 1131w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of a smiling couple, she in a dark top and he in a patterned tie" loading="lazy">
+                <source type="image/webp" srcset="assets/small/webp/couple-portrait_small.webp 377w, assets/mid/webp/couple-portrait_mid.webp 510w, assets/medium/webp/couple-portrait_medium.webp 754w, assets/large/webp/couple-portrait_large.webp 1131w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
+                <img src="assets/medium/couple-portrait_medium.jpg" srcset="assets/small/couple-portrait_small.jpg 377w, assets/mid/couple-portrait_mid.jpg 510w, assets/medium/couple-portrait_medium.jpg 754w, assets/large/couple-portrait_large.jpg 1131w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of a smiling couple, she in a dark top and he in a patterned tie" loading="lazy">
             </picture>
             <picture>
-                <source type="image/webp" srcset="assets/small/webp/couple-with-sunglasses_small.webp 386w, assets/medium/webp/couple-with-sunglasses_medium.webp 773w, assets/mid/webp/couple-with-sunglasses_mid.webp 510w, assets/large/webp/couple-with-sunglasses_large.webp 1160w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-                <img src="assets/medium/couple-with-sunglasses_medium.jpg" srcset="assets/small/couple-with-sunglasses_small.jpg 386w, assets/medium/couple-with-sunglasses_medium.jpg 773w, assets/mid/couple-with-sunglasses_mid.jpg 510w, assets/large/couple-with-sunglasses_large.jpg 1160w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of a curly-haired man in dark sunglasses beside a smiling woman" loading="lazy">
+                <source type="image/webp" srcset="assets/small/webp/couple-with-sunglasses_small.webp 386w, assets/mid/webp/couple-with-sunglasses_mid.webp 510w, assets/medium/webp/couple-with-sunglasses_medium.webp 773w, assets/large/webp/couple-with-sunglasses_large.webp 1160w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
+                <img src="assets/medium/couple-with-sunglasses_medium.jpg" srcset="assets/small/couple-with-sunglasses_small.jpg 386w, assets/mid/couple-with-sunglasses_mid.jpg 510w, assets/medium/couple-with-sunglasses_medium.jpg 773w, assets/large/couple-with-sunglasses_large.jpg 1160w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of a curly-haired man in dark sunglasses beside a smiling woman" loading="lazy">
             </picture>
             <picture>
-                <source type="image/webp" srcset="assets/small/webp/two-women-formal-portrait_small.webp 381w, assets/medium/webp/two-women-formal-portrait_medium.webp 763w, assets/mid/webp/two-women-formal-portrait_mid.webp 510w, assets/large/webp/two-women-formal-portrait_large.webp 1144w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
-                <img src="assets/medium/two-women-formal-portrait_medium.jpg" srcset="assets/small/two-women-formal-portrait_small.jpg 381w, assets/medium/two-women-formal-portrait_medium.jpg 763w, assets/mid/two-women-formal-portrait_mid.jpg 510w, assets/large/two-women-formal-portrait_large.jpg 1144w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of two smiling women in formal dresses" loading="lazy">
+                <source type="image/webp" srcset="assets/small/webp/two-women-formal-portrait_small.webp 381w, assets/mid/webp/two-women-formal-portrait_mid.webp 510w, assets/medium/webp/two-women-formal-portrait_medium.webp 763w, assets/large/webp/two-women-formal-portrait_large.webp 1144w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
+                <img src="assets/medium/two-women-formal-portrait_medium.jpg" srcset="assets/small/two-women-formal-portrait_small.jpg 381w, assets/mid/two-women-formal-portrait_mid.jpg 510w, assets/medium/two-women-formal-portrait_medium.jpg 763w, assets/large/two-women-formal-portrait_large.jpg 1144w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px" alt="Watercolor portrait of two smiling women in formal dresses" loading="lazy">
             </picture>
             <picture>
                 <source type="image/webp" srcset="assets/small/webp/two-women-smiling_small.webp 209w, assets/medium/webp/two-women-smiling_medium.webp 419w, assets/mid/webp/two-women-smiling_mid.webp 510w, assets/large/webp/two-women-smiling_large.webp 628w" sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px">
@@ -320,85 +331,68 @@
     </section>
     <hr class="icon">
     <section>
-        <h2>Mediums</h2>
-        <ul>
-            <li><strong>Watercolor</strong> on cold-press paper: soft, luminous, and delicate. Ideal for pets, portraits, and gifts. Shipped unframed and ready for a standard mat and frame.</li>
-            <li><strong>Acrylic</strong> on stretched canvas: bold color with a quicker drying time. Arrives ready to hang.</li>
-            <li><strong>Oil</strong> on stretched canvas: rich, layered, and long-lasting, often combined with charcoal. Oil needs extra drying time before it can be varnished and shipped (see turnaround).</li>
-        </ul>
+        <h2>Medium</h2>
+        <p>Watercolor on cold-press paper: soft, luminous, and delicate, ideal for pets, portraits, and gifts. Paintings ship unframed and fit a standard mat and frame.</p>
     </section>
     <hr class="icon">
     <section>
-        <h2>Sizes & pricing</h2>
-        <p><!-- PLACEHOLDER: confirm with Alysa --></p>
+        <h2>Sizes &amp; pricing</h2>
+        <!-- PLACEHOLDER: confirm with Alysa -->
         <div class="table-wrapper">
             <table>
                 <caption>Starting prices for one subject</caption>
                 <thead>
                     <tr>
                         <th>Size</th>
-                        <th>Watercolor</th>
-                        <th>Acrylic</th>
-                        <th>Oil</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>5 × 7 in</td>
                         <td>$75</td>
-                        <td>—</td>
-                        <td>—</td>
                     </tr>
                     <tr>
                         <td>8 × 10 in</td>
                         <td>$125</td>
-                        <td>$175</td>
-                        <td>$200</td>
+                    </tr>
+                    <tr>
+                        <td>9 × 12 in</td>
+                        <td>$150</td>
                     </tr>
                     <tr>
                         <td>11 × 14 in</td>
                         <td>$175</td>
-                        <td>$250</td>
-                        <td>$300</td>
                     </tr>
                     <tr>
-                        <td>16 × 20 in</td>
-                        <td>—</td>
-                        <td>$375</td>
-                        <td>$450</td>
-                    </tr>
-                    <tr>
-                        <td>18 × 24 in and larger</td>
-                        <td>—</td>
-                        <td>Ask for a quote</td>
+                        <td>Larger sizes</td>
                         <td>Ask for a quote</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p>- Each additional person or pet adds 25% to the base price.<br>- Detailed backgrounds may add to the price. Your quote will include everything up front.<br>- Prices don't include shipping.</p>
+        <ul>
+            <li>Each additional person or pet adds 25% to the base price.</li>
+            <li>Detailed backgrounds may add to the price. Your quote will include everything up front.</li>
+            <li>Prices don't include shipping.</li>
+        </ul>
     </section>
     <hr class="icon">
     <section>
         <h2>Turnaround time</h2>
-        <p><!-- PLACEHOLDER: confirm with Alysa --></p>
-        <ul>
-            <li><strong>Watercolor:</strong> 2–3 weeks</li>
-            <li><strong>Acrylic:</strong> 3–4 weeks</li>
-            <li><strong>Oil:</strong> 4–6 weeks, plus about 2 weeks of drying time before varnishing and shipping</li>
-        </ul>
-        <p>Times start once your deposit is received and depend on the current waitlist. Have a deadline? Mention it in your request. Holiday commissions fill up fast, so book by October 15 for December delivery.</p>
+        <!-- PLACEHOLDER: confirm with Alysa -->
+        <p>Most watercolor commissions take 2–3 weeks once your deposit is received, depending on my current waitlist. Have a deadline? Mention it when you reach out. Holiday commissions fill up fast, so book by October 15 for December delivery.</p>
     </section>
     <hr class="icon">
     <section>
-        <h2>Shipping & delivery</h2>
-        <p><!-- PLACEHOLDER: confirm with Alysa --></p>
-        <p>Every painting is wrapped in protective glassine, sandwiched between rigid boards, and shipped in a sturdy box with tracking and insurance. Shipping within the U.S. is quoted with your painting. International shipping is available on request. Local pickup in Oregon is always free. You'll get a tracking number as soon as your painting is on its way.</p>
+        <h2>Shipping &amp; delivery</h2>
+        <!-- PLACEHOLDER: confirm with Alysa -->
+        <p>I wrap every painting in protective glassine, sandwich it between rigid boards, and ship it in a sturdy envelope or box with tracking and insurance. Shipping within the U.S. is quoted with your painting, and international shipping is available on request. Local pickup in Oregon is always free. You'll get a tracking number as soon as your painting is on its way.</p>
     </section>
     <hr class="icon">
-    <section style="text-align: center;">
+    <section class="ab-closing">
         <h2>Ready to start?</h2>
-        <p>Tell Alysa about your idea.</p>
+        <p>Please reach out via the inquiry button and let's discuss the details.</p>
         <a class="ab-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdDH24qxTCZluyCPoAssFj2b07bp2eBq6NRsRFF3vzKnZHQEQ/viewform" target="_blank" rel="noopener">Request a commission</a>
     </section>
 
