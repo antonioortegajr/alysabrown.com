@@ -6,7 +6,7 @@ Guidance for AI coding agents working on this repo.
 
 alysabrown.com is a portfolio site for Alysa Brown, a fine artist in Oregon.
 
-- Plain static HTML. No build step, no package manager, no framework, no JavaScript.
+- Plain static HTML. No build step, no package manager, no framework, no JavaScript. Inline `<script type="application/ld+json">` blocks for structured data are allowed (JSON-LD is data, not executable script).
 - Markup and CSS live in `index.html` and `commissions.html` (each with one inline `<style>` block in `<head>`).
 - External resources: Google Fonts only (Cormorant Garamond, Jost). Icons are inline SVGs (social links in the header; the `hr.icon` heart is an SVG data URI in CSS). Don't add icon fonts or other render-blocking stylesheets.
 - Hosted on GitHub Pages, deployed from the root of `main`; `CNAME` holds the domain. GitHub Pages ignores `.htaccess` and sets its own headers (e.g. a fixed `cache-control: max-age=600`), so cache/header changes can't be made from the repo.

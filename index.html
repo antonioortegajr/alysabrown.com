@@ -438,6 +438,61 @@
           .ab-utility { justify-content: flex-end; }
         }
     </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://alysabrown.com/#website",
+                    "name": "Alysa Brown",
+                    "alternateName": "Alysa Brown Fine Art",
+                    "url": "https://alysabrown.com/"
+                },
+                {
+                    "@type": "Person",
+                    "@id": "https://alysabrown.com/#alysa",
+                    "name": "Alysa Brown",
+                    "jobTitle": "Fine Artist",
+                    "url": "https://alysabrown.com/",
+                    "image": "https://alysabrown.com/assets/medium/alysa-brown-painting-in-studio_medium.jpg",
+                    "description": "Alysa Brown is an artist based in Oregon whose paintings capture the essence of her subjects through expressive brushstrokes and blending mediums.",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "OR",
+                        "addressCountry": "US"
+                    },
+                    "knowsAbout": [
+                        "Portrait painting",
+                        "Figurative painting",
+                        "Watercolor painting",
+                        "Charcoal drawing",
+                        "Oil painting",
+                        "Acrylic painting",
+                        "Oil pastels",
+                        "Classical portraiture",
+                        "Impressionism",
+                        "Contemporary abstract art"
+                    ],
+                    "sameAs": [
+                        "https://www.instagram.com/alybrowny",
+                        "https://www.tiktok.com/@alybrowny"
+                    ]
+                },
+                {
+                    "@type": "ProfilePage",
+                    "@id": "https://alysabrown.com/#profile",
+                    "url": "https://alysabrown.com/",
+                    "isPartOf": {
+                        "@id": "https://alysabrown.com/#website"
+                    },
+                    "mainEntity": {
+                        "@id": "https://alysabrown.com/#alysa"
+                    }
+                }
+            ]
+        }
+    </script>
 </head>
 <body>
     <header class="ab-header">
