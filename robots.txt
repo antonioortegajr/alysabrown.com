@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alysabrown.com/sitemap.xml

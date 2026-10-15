@@ -20,6 +20,8 @@ README.md         # one-line project description
 AGENTS.md         # this file
 .htaccess         # Apache headers config; unused on GitHub Pages
 CNAME             # alysabrown.com
+sitemap.xml       # XML sitemap listing the site's pages
+robots.txt        # crawler rules; points to sitemap.xml
 lighthouserc.json # Lighthouse CI config for PRs
 lighthouserc.live.json  # Lighthouse CI config for the live site (warn-only)
 .github/workflows/lighthouse.yml       # runs Lighthouse CI on PRs to staging
@@ -44,6 +46,8 @@ Where images appear in `index.html`:
 Where images appear in `commissions.html`:
 
 - `.gallery`: the commissions examples grid (3 columns on desktop, 2 at ≤768px, 1 at ≤600px).
+
+When you add a new page, add its URL to `sitemap.xml`.
 
 ## Running locally
 
