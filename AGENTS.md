@@ -89,8 +89,20 @@ npx @lhci/cli@0.15.1 autorun
    cwebp -q 80 assets/small/descriptive-name_small.jpg -o assets/small/webp/descriptive-name_small.webp
    ```
 
-3. Add a `<picture>` to the `.gallery` section in `index.html`, copying an existing one: a webp `<source>` with `srcset`/`sizes`, a JPG `<img>` fallback, `loading="lazy"`, and a descriptive `alt`.
-4. The `w` descriptors in `srcset` must be each file's real pixel width (check with `sips -g pixelWidth <file>`), not a guess. Wrong descriptors make browsers download the wrong size.
+3. Embed creator and copyright metadata in every JPG and WebP (all sizes, plus the original) with `exiftool`. `sips` and `cwebp` strip or don't write it, so re-run this whenever images are regenerated. `IPTC` fields apply to JPEG only; WebP keeps the XMP and EXIF fields:
+
+   ```sh
+   exiftool -api Compact=NoPadding \
+     -IPTC:By-line="Alysa Brown" -IPTC:Credit="Alysa Brown" -IPTC:CopyrightNotice="© Alysa Brown" \
+     -EXIF:Artist="Alysa Brown" -EXIF:Copyright="© Alysa Brown" \
+     -XMP-dc:Creator="Alysa Brown" -XMP-photoshop:Credit="Alysa Brown" -XMP-dc:Rights="© Alysa Brown" \
+     -overwrite_original <files>
+   ```
+
+   `-api Compact=NoPadding` drops XMP padding so each file grows by about 1 KB. Verify with `exiftool -a -G1 <file>`.
+
+4. Add a `<picture>` to the `.gallery` section in `index.html`, copying an existing one: a webp `<source>` with `srcset`/`sizes`, a JPG `<img>` fallback, `loading="lazy"`, and a descriptive `alt`.
+5. The `w` descriptors in `srcset` must be each file's real pixel width (check with `sips -g pixelWidth <file>`), not a guess. Wrong descriptors make browsers download the wrong size.
 
 ## Git and pull requests
 
