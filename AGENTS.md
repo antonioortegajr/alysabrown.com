@@ -6,7 +6,7 @@ Guidance for AI coding agents working on this repo.
 
 alysabrown.com is a portfolio site for Alysa Brown, a fine artist in Oregon.
 
-- Plain static HTML. No build step, no package manager, no framework, no JavaScript.
+- Plain static HTML. No build step, no package manager, no framework, no JavaScript. Inline `<script type="application/ld+json">` blocks for structured data are allowed (JSON-LD is data, not executable script).
 - Markup and CSS live in `index.html` and `commissions.html` (each with one inline `<style>` block in `<head>`).
 - External resources: Google Fonts only (Cormorant Garamond, Jost). Icons are inline SVGs (social links in the header; the `hr.icon` heart is an SVG data URI in CSS). Don't add icon fonts or other render-blocking stylesheets.
 - Hosted on GitHub Pages, deployed from the root of `main`; `CNAME` holds the domain. GitHub Pages ignores `.htaccess` and sets its own headers (e.g. a fixed `cache-control: max-age=600`), so cache/header changes can't be made from the repo.
@@ -20,6 +20,8 @@ README.md         # one-line project description
 AGENTS.md         # this file
 .htaccess         # Apache headers config; unused on GitHub Pages
 CNAME             # alysabrown.com
+sitemap.xml       # XML sitemap listing the site's pages
+robots.txt        # crawler rules; points to sitemap.xml
 lighthouserc.json # Lighthouse CI config for PRs
 lighthouserc.live.json  # Lighthouse CI config for the live site (warn-only)
 .github/workflows/lighthouse.yml       # runs Lighthouse CI on PRs to staging
@@ -44,6 +46,8 @@ Where images appear in `index.html`:
 Where images appear in `commissions.html`:
 
 - `.gallery`: the commissions examples grid (3 columns on desktop, 2 at ≤768px, 1 at ≤600px).
+
+When you add a new page, add its URL to `sitemap.xml`.
 
 ## Running locally
 
@@ -85,8 +89,20 @@ npx @lhci/cli@0.15.1 autorun
    cwebp -q 80 assets/small/descriptive-name_small.jpg -o assets/small/webp/descriptive-name_small.webp
    ```
 
-3. Add a `<picture>` to the `.gallery` section in `index.html`, copying an existing one: a webp `<source>` with `srcset`/`sizes`, a JPG `<img>` fallback, `loading="lazy"`, and a descriptive `alt`.
-4. The `w` descriptors in `srcset` must be each file's real pixel width (check with `sips -g pixelWidth <file>`), not a guess. Wrong descriptors make browsers download the wrong size.
+3. Embed creator and copyright metadata in every JPG and WebP (all sizes, plus the original) with `exiftool`. `sips` and `cwebp` strip or don't write it, so re-run this whenever images are regenerated. `IPTC` fields apply to JPEG only; WebP keeps the XMP and EXIF fields:
+
+   ```sh
+   exiftool -api Compact=NoPadding \
+     -IPTC:By-line="Alysa Brown" -IPTC:Credit="Alysa Brown" -IPTC:CopyrightNotice="© Alysa Brown" \
+     -EXIF:Artist="Alysa Brown" -EXIF:Copyright="© Alysa Brown" \
+     -XMP-dc:Creator="Alysa Brown" -XMP-photoshop:Credit="Alysa Brown" -XMP-dc:Rights="© Alysa Brown" \
+     -overwrite_original <files>
+   ```
+
+   `-api Compact=NoPadding` drops XMP padding so each file grows by about 1 KB. Verify with `exiftool -a -G1 <file>`.
+
+4. Add a `<picture>` to the `.gallery` section in `index.html`, copying an existing one: a webp `<source>` with `srcset`/`sizes`, a JPG `<img>` fallback, `loading="lazy"`, and a descriptive `alt`.
+5. The `w` descriptors in `srcset` must be each file's real pixel width (check with `sips -g pixelWidth <file>`), not a guess. Wrong descriptors make browsers download the wrong size.
 
 ## Git and pull requests
 

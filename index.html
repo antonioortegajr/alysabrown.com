@@ -438,6 +438,61 @@
           .ab-utility { justify-content: flex-end; }
         }
     </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://alysabrown.com/#website",
+                    "name": "Alysa Brown",
+                    "alternateName": "Alysa Brown Fine Art",
+                    "url": "https://alysabrown.com/"
+                },
+                {
+                    "@type": "Person",
+                    "@id": "https://alysabrown.com/#alysa",
+                    "name": "Alysa Brown",
+                    "jobTitle": "Fine Artist",
+                    "url": "https://alysabrown.com/",
+                    "image": "https://alysabrown.com/assets/medium/alysa-brown-painting-in-studio_medium.jpg",
+                    "description": "Alysa Brown is an artist based in Oregon whose paintings capture the essence of her subjects through expressive brushstrokes and blending mediums.",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "OR",
+                        "addressCountry": "US"
+                    },
+                    "knowsAbout": [
+                        "Portrait painting",
+                        "Figurative painting",
+                        "Watercolor painting",
+                        "Charcoal drawing",
+                        "Oil painting",
+                        "Acrylic painting",
+                        "Oil pastels",
+                        "Classical portraiture",
+                        "Impressionism",
+                        "Contemporary abstract art"
+                    ],
+                    "sameAs": [
+                        "https://www.instagram.com/alybrowny",
+                        "https://www.tiktok.com/@alybrowny"
+                    ]
+                },
+                {
+                    "@type": "ProfilePage",
+                    "@id": "https://alysabrown.com/#profile",
+                    "url": "https://alysabrown.com/",
+                    "isPartOf": {
+                        "@id": "https://alysabrown.com/#website"
+                    },
+                    "mainEntity": {
+                        "@id": "https://alysabrown.com/#alysa"
+                    }
+                }
+            ]
+        }
+    </script>
 </head>
 <body>
     <header class="ab-header">
@@ -496,7 +551,7 @@
                                  assets/large/bearded-man-with-cat-and-ivy_large.jpg 675w"
                          sizes="(max-width: 800px) calc(100vw - 40px), 760px"
                          width="450" height="600"
-                         alt="Detail from a portrait by Alysa Brown"
+                         alt="Bearded man in glasses and a cap with a tortoiseshell cat looking up at him beside ivy, painting by Alysa Brown"
                          fetchpriority="high">
                 </picture>
             </div>
@@ -519,7 +574,7 @@
                          assets/mid/figure-with-sunflower_mid.jpg 510w,
                          assets/large/figure-with-sunflower_large.jpg 675w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
-                 alt="Artwork"
+                 alt="Figure with a sunflower, painting by Alysa Brown"
                  loading="lazy">
         </picture>
         <picture>
@@ -535,7 +590,7 @@
                          assets/mid/figure-in-sun-hat-among-pink-petals_mid.jpg 510w,
                          assets/large/figure-in-sun-hat-among-pink-petals_large.jpg 676w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
-                 alt="Artwork 1"
+                 alt="Figure in a sun hat among pink petals, painting by Alysa Brown"
                  loading="lazy">
         </picture>
         <picture>
@@ -551,7 +606,7 @@
                          assets/mid/reclining-figure-in-sun-hat_mid.jpg 510w,
                          assets/large/reclining-figure-in-sun-hat_large.jpg 676w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
-                 alt="Artwork 2"
+                 alt="Reclining figure in a sun hat, painting by Alysa Brown"
                  loading="lazy">
         </picture>
         <picture>
@@ -563,7 +618,7 @@
                  srcset="assets/small/woman-in-profile-eyes-closed_small.jpg 225w,
                          assets/medium/woman-in-profile-eyes-closed_medium.jpg 435w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
-                 alt="Artwork 3"
+                 alt="Woman in profile with her eyes closed, painting by Alysa Brown"
                  loading="lazy">
         </picture>
         <picture>
@@ -579,7 +634,7 @@
                          assets/mid/wolf-in-violet-and-gold_mid.jpg 510w,
                          assets/large/wolf-in-violet-and-gold_large.jpg 676w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
-                 alt="Artwork 4"
+                 alt="Wolf in violet and gold, painting by Alysa Brown"
                  loading="lazy">
         </picture>
         <picture>
@@ -595,7 +650,7 @@
                          assets/mid/seated-figure-with-red-roses_mid.jpg 510w,
                          assets/large/seated-figure-with-red-roses_large.jpg 670w"
                  sizes="(max-width: 600px) 290px, (max-width: 768px) 50vw, 190px"
-                 alt="Artwork 5"
+                 alt="Seated figure with red roses, painting by Alysa Brown"
                  loading="lazy">
         </picture>
     </section>
@@ -614,7 +669,7 @@
                          assets/medium/fox-and-roses-diptych_medium.jpg 800w,
                          assets/large/fox-and-roses-diptych_large.jpg 1200w"
                  sizes="(max-width: 600px) 290px, 300px"
-                 alt="Artwork 4" 
+                 alt="Fox and roses diptych, painting by Alysa Brown" 
                  class="main-image"
                  loading="lazy">
         </picture>
@@ -638,7 +693,7 @@
                                      assets/medium/alysa-brown-painting-in-studio_medium.jpg 450w,
                                      assets/large/alysa-brown-painting-in-studio_large.jpg 676w"
                              sizes="150px"
-                             alt="Artist Profile" 
+                             alt="Alysa Brown painting in her studio" 
                              class="profile-image"
                              loading="lazy">
                     </picture>
