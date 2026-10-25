@@ -227,59 +227,223 @@
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "Service",
-            "@id": "https://alysabrown.com/commissions.html#service",
-            "name": "Custom Watercolor Portrait Commissions",
-            "serviceType": "Watercolor portrait commission",
-            "url": "https://alysabrown.com/commissions.html",
-            "provider": {
-                "@type": "Person",
-                "@id": "https://alysabrown.com/#alysa",
-                "name": "Alysa Brown"
-            },
-            "areaServed": {
-                "@type": "Country",
-                "name": "United States"
-            },
-            "description": "Custom watercolor portrait commissions painted from your favorite photos. Subjects include pets such as dogs, cats, horses, and other animal companions, including memorial portraits; loved ones such as parents, grandparents, siblings, couples, and wedding portraits; people, with individual portraits; and places and keepsakes such as homes, favorite spots, and classic cars.",
-            "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Commission subjects",
-                "itemListElement": [
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Pets",
-                            "description": "Dogs, cats, horses, and other animal companions, including memorial portraits."
-                        }
+            "@graph": [
+                {
+                    "@type": "Service",
+                    "@id": "https://alysabrown.com/commissions.html#service",
+                    "name": "Custom Watercolor Portrait Commissions",
+                    "serviceType": "Watercolor portrait commission",
+                    "url": "https://alysabrown.com/commissions.html",
+                    "provider": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
                     },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Loved ones",
-                            "description": "Parents, grandparents, siblings, couples, and wedding portraits."
-                        }
+                    "areaServed": {
+                        "@type": "Country",
+                        "name": "United States"
                     },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "People",
-                            "description": "Individual portraits that capture personality, from candid moments to formal poses."
-                        }
-                    },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Places and keepsakes",
-                            "description": "Homes, favorite spots, classic cars, and other things that hold a story."
-                        }
+                    "description": "Custom watercolor portrait commissions painted from your favorite photos. Subjects include pets such as dogs, cats, horses, and other animal companions, including memorial portraits; loved ones such as parents, grandparents, siblings, couples, and wedding portraits; people, with individual portraits; and places and keepsakes such as homes, favorite spots, and classic cars.",
+                    "hasOfferCatalog": {
+                        "@type": "OfferCatalog",
+                        "name": "Commission subjects",
+                        "itemListElement": [
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Pets",
+                                    "description": "Dogs, cats, horses, and other animal companions, including memorial portraits."
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Loved ones",
+                                    "description": "Parents, grandparents, siblings, couples, and wedding portraits."
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "People",
+                                    "description": "Individual portraits that capture personality, from candid moments to formal poses."
+                                }
+                            },
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Places and keepsakes",
+                                    "description": "Homes, favorite spots, classic cars, and other things that hold a story."
+                                }
+                            }
+                        ]
                     }
-                ]
-            }
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-dog-portrait",
+                    "contentUrl": "https://alysabrown.com/assets/dog-portrait.jpg",
+                    "width": 2890,
+                    "height": 4032,
+                    "caption": "Watercolor portrait of a tan and white dog with perked ears",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-red-mustang",
+                    "contentUrl": "https://alysabrown.com/assets/red-mustang.jpg",
+                    "width": 2860,
+                    "height": 2244,
+                    "caption": "Watercolor of a red Ford Mustang with black racing stripes on a track",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-couple-on-park-bench",
+                    "contentUrl": "https://alysabrown.com/assets/couple-on-park-bench.jpg",
+                    "width": 3176,
+                    "height": 2440,
+                    "caption": "Watercolor of a couple seen from behind, sitting close on a park bench",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-couple-portrait",
+                    "contentUrl": "https://alysabrown.com/assets/couple-portrait.jpg",
+                    "width": 3464,
+                    "height": 2756,
+                    "caption": "Watercolor portrait of a smiling couple, she in a dark top and he in a patterned tie",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-couple-with-sunglasses",
+                    "contentUrl": "https://alysabrown.com/assets/couple-with-sunglasses.jpg",
+                    "width": 3411,
+                    "height": 2646,
+                    "caption": "Watercolor portrait of a curly-haired man in dark sunglasses beside a smiling woman",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-two-women-formal-portrait",
+                    "contentUrl": "https://alysabrown.com/assets/two-women-formal-portrait.jpg",
+                    "width": 3454,
+                    "height": 2716,
+                    "caption": "Watercolor portrait of two smiling women in formal dresses",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-two-women-smiling",
+                    "contentUrl": "https://alysabrown.com/assets/two-women-smiling.jpg",
+                    "width": 2372,
+                    "height": 3396,
+                    "caption": "Watercolor portrait of two blonde women leaning their heads together and smiling",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-grandmother-with-red-rose",
+                    "contentUrl": "https://alysabrown.com/assets/grandmother-with-red-rose.jpg",
+                    "width": 2614,
+                    "height": 3590,
+                    "caption": "Watercolor portrait of an older woman in a colorful blouse holding a red rose",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-laughing-woman-portrait",
+                    "contentUrl": "https://alysabrown.com/assets/laughing-woman-portrait.jpg",
+                    "width": 2832,
+                    "height": 3880,
+                    "caption": "Watercolor of an older woman in glasses laughing with her head tipped back",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#img-guitar-player-portrait",
+                    "contentUrl": "https://alysabrown.com/assets/guitar-player-portrait.jpg",
+                    "width": 2796,
+                    "height": 3740,
+                    "caption": "Watercolor of a long-haired man playing an acoustic guitar",
+                    "creator": {
+                        "@type": "Person",
+                        "@id": "https://alysabrown.com/#alysa",
+                        "name": "Alysa Brown"
+                    },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown",
+                    "acquireLicensePage": "https://alysabrown.com/commissions.html"
+                }
+            ]
         }
     </script>
 </head>
