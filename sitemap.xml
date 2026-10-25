@@ -1,11 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://alysabrown.com/</loc>
-        <lastmod>2026-10-14</lastmod>
+        <lastmod>2026-10-24</lastmod>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/figure-with-sunflower.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/figure-in-sun-hat-among-pink-petals.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/reclining-figure-in-sun-hat.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/woman-in-profile-eyes-closed.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/wolf-in-violet-and-gold.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/seated-figure-with-red-roses.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/fox-and-roses-diptych.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/alysa-brown-painting-in-studio.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://alysabrown.com/commissions.html</loc>
-        <lastmod>2026-10-14</lastmod>
+        <lastmod>2026-10-24</lastmod>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/dog-portrait.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/red-mustang.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/couple-on-park-bench.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/couple-portrait.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/couple-with-sunglasses.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/two-women-formal-portrait.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/two-women-smiling.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/grandmother-with-red-rose.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/laughing-woman-portrait.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/guitar-player-portrait.jpg</image:loc>
+        </image:image>
     </url>
 </urlset>
