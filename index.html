@@ -11,10 +11,10 @@
     <meta property="og:title" content="Alysa Brown | Oregon Fine Artist – Portraits &amp; Pet Commissions">
     <meta property="og:description" content="Alysa Brown is an Oregon fine artist whose paintings capture the essence of her subjects through expressive brushstrokes and blending mediums.">
     <meta property="og:url" content="https://alysabrown.com/">
-    <meta property="og:image" content="https://alysabrown.com/assets/large/bearded-man-with-cat-and-ivy_large.jpg">
-    <meta property="og:image:width" content="675">
-    <meta property="og:image:height" content="900">
-    <meta property="og:image:alt" content="Bearded man in glasses and a cap with a tortoiseshell cat looking up at him beside ivy, painting by Alysa Brown">
+    <meta property="og:image" content="https://alysabrown.com/assets/alysa-brown-painting-in-studio.jpg">
+    <meta property="og:image:width" content="1090">
+    <meta property="og:image:height" content="1452">
+    <meta property="og:image:alt" content="Alysa Brown painting in her studio">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -407,6 +407,18 @@
             "@context": "https://schema.org",
             "@graph": [
                 {
+                    "@type": "ImageObject",
+                    "@id": "https://alysabrown.com/#alysa-photo",
+                    "url": "https://alysabrown.com/assets/alysa-brown-painting-in-studio.jpg",
+                    "contentUrl": "https://alysabrown.com/assets/alysa-brown-painting-in-studio.jpg",
+                    "width": 1090,
+                    "height": 1452,
+                    "caption": "Alysa Brown painting in her studio",
+                    "creator": { "@id": "https://alysabrown.com/#alysa" },
+                    "creditText": "Alysa Brown",
+                    "copyrightNotice": "© Alysa Brown"
+                },
+                {
                     "@type": "WebSite",
                     "@id": "https://alysabrown.com/#website",
                     "name": "Alysa Brown",
@@ -419,7 +431,7 @@
                     "name": "Alysa Brown",
                     "jobTitle": "Fine Artist",
                     "url": "https://alysabrown.com/",
-                    "image": "https://alysabrown.com/assets/medium/alysa-brown-painting-in-studio_medium.jpg",
+                    "image": { "@id": "https://alysabrown.com/#alysa-photo" },
                     "description": "Alysa Brown is an artist based in Oregon whose paintings capture the essence of her subjects through expressive brushstrokes and blending mediums.",
                     "address": {
                         "@type": "PostalAddress",
@@ -452,7 +464,8 @@
                     },
                     "mainEntity": {
                         "@id": "https://alysabrown.com/#alysa"
-                    }
+                    },
+                    "primaryImageOfPage": { "@id": "https://alysabrown.com/#alysa-photo" }
                 }
             ]
         }
