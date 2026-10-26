@@ -8,7 +8,7 @@ alysabrown.com is a portfolio site for Alysa Brown, a fine artist in Oregon.
 
 - Plain static HTML. No build step, no package manager, no framework. Inline `<script type="application/ld+json">` blocks for structured data are allowed.
 - JavaScript is limited to small, dependency-free web components in `components/`, used for markup shared across pages (so it lives in one place instead of drifting between copies). Load each with `<script type="module" src="components/name.js"></script>` in `<head>` (modules are deferred, so they don't block rendering). Keep page content in the HTML: a component should only hold shared chrome like navigation, and the page must still be usable if the script fails.
-- Markup and CSS live in `index.html` and `commissions.html` (each with one inline `<style>` block in `<head>`), except for shared components, which carry their own styles in a Shadow DOM.
+- Markup and CSS live in each page's HTML file (`index.html`, `about.html`, `commissions.html`, `contact.html`), each with one inline `<style>` block in `<head>`, except for shared components, which carry their own styles in a Shadow DOM.
 - External resources: Google Fonts only (Cormorant Garamond, Jost). Icons are inline SVGs (social links in the header; the `hr.icon` heart is an SVG data URI in CSS). Don't add icon fonts or other render-blocking stylesheets.
 - Hosted on GitHub Pages, deployed from the root of `main`; `CNAME` holds the domain. GitHub Pages ignores `.htaccess` and sets its own headers (e.g. a fixed `cache-control: max-age=600`), so cache/header changes can't be made from the repo.
 
@@ -16,7 +16,9 @@ alysabrown.com is a portfolio site for Alysa Brown, a fine artist in Oregon.
 
 ```
 index.html        # home page
+about.html        # artist bio page
 commissions.html  # commissions page
+contact.html      # contact page: sales and commission forms, social links
 README.md         # one-line project description
 AGENTS.md         # this file
 .htaccess         # Apache headers config; unused on GitHub Pages
@@ -50,11 +52,15 @@ Where images appear in `commissions.html`:
 
 - `.gallery`: the commissions examples grid (3 columns on desktop, 2 at ≤768px, 1 at ≤600px).
 
+In `about.html`, the round profile photo (`alysa-brown-painting-in-studio`) is above the fold, so it is not lazy-loaded. `contact.html` has no images.
+
 Shared components:
 
 - `<ab-menu>` (`components/ab-menu.js`): the hamburger menu to the right of the social icons in `.ab-utility__end`. Its links come from the `PAGES` list at the top of the file, and it marks the current page with `aria-current="page"`. Its styles live in the component and use the `--ab-*` custom properties from `.ab-header`. Each page has one `ab-menu { display: block; min-width: 25px; min-height: 18px; }` rule that reserves its space before the script runs, so the header doesn't shift.
 
-When you add a new page, add its URL to `sitemap.xml`, add it to `PAGES` in `components/ab-menu.js`, and include `<ab-menu></ab-menu>` and the component's `<script>` tag in its header.
+Every page also ends with a plain-HTML `<footer>` containing `<nav class="site-nav">` links to all pages, with `aria-current="page"` on the current one. These are ordinary links in the page source so search engines can crawl them without running the component.
+
+When you add a new page, add its URL to `sitemap.xml` and to `lighthouserc.json`, add it to `PAGES` in `components/ab-menu.js` and to the `.site-nav` footer on every page, and include `<ab-menu></ab-menu>` and the component's `<script>` tag in its header.
 
 ## Running locally
 

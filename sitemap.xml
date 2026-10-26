@@ -33,6 +33,13 @@
         </image:image>
     </url>
     <url>
+        <loc>https://alysabrown.com/about.html</loc>
+        <lastmod>2026-10-25</lastmod>
+        <image:image>
+            <image:loc>https://alysabrown.com/assets/alysa-brown-painting-in-studio.jpg</image:loc>
+        </image:image>
+    </url>
+    <url>
         <loc>https://alysabrown.com/commissions.html</loc>
         <lastmod>2026-10-24</lastmod>
         <image:image>
@@ -65,5 +72,9 @@
         <image:image>
             <image:loc>https://alysabrown.com/assets/guitar-player-portrait.jpg</image:loc>
         </image:image>
+    </url>
+    <url>
+        <loc>https://alysabrown.com/contact.html</loc>
+        <lastmod>2026-10-25</lastmod>
     </url>
 </urlset>

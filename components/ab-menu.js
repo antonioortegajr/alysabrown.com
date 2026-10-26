@@ -4,7 +4,9 @@
 
 const PAGES = [
     { href: "index.html", label: "Home" },
+    { href: "about.html", label: "About" },
     { href: "commissions.html", label: "Commissions" },
+    { href: "contact.html", label: "Contact" },
 ];
 
 const STYLES = `

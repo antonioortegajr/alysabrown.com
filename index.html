@@ -107,6 +107,23 @@
         .about-text {
             display: block;
         }
+        footer {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: #6e6a63;
+            font-size: 0.9rem;
+        }
+        .site-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .site-nav a { color: #6e6a63; }
+        .site-nav a:hover,
+        .site-nav a:focus-visible,
+        .site-nav a[aria-current="page"] { color: #171614; }
         @media (max-width: 768px) {
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
@@ -801,5 +818,15 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <nav class="site-nav" aria-label="Footer">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="about.html">About</a>
+            <a href="commissions.html">Commissions</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <p>© 2026 Alysa Brown</p>
+    </footer>
 </body>
 </html>
